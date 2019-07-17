@@ -78,13 +78,13 @@ public class MemberInfo {
 
 	// 로그인시 회원가입 비밀번호와 비교
 	public boolean matchu_id(String id) {
-		return hasu_id() && u_id.equals(id);
+		return hasu_pw() && u_id.equals(id);
 
 	}
 
 	// MemberInfo 객체 -> LoginInfo 객체 반환
 	public LoginInfo toLoginInfo() {
-		return new LoginInfo(u_id, u_name, u_photo);
+		return new LoginInfo(u_id,u_pw, u_name, u_photo);
 	}
 
 }
