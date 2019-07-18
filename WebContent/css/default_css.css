@@ -1,0 +1,114 @@
+
+
+    @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Pacifico|Roboto:300&display=swap' rel="stylesheet");
+    
+    /* 
+    font-family: 'Pacifico', cursive;
+	font-family: 'Roboto', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
+ 	*/
+    
+    
+    
+    *{margin:0; padding: 0;}
+    
+    body {
+        min-width: 900px; 
+        font-size: 0.9em;
+        font-family: 'Nanum Gothic', sans-serif;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit; 
+        width: inherit;
+    }
+    
+    /*이미지(로고, 배경화면) 작업*/
+    .logo,
+    .bkg {
+        padding: 20px 10px;
+        margin: 0 auto;
+    }
+    
+    .logo{
+        width: 350px;
+        clear: both;
+        font-family: 'Pacifico', cursive; font-size: 3.5em;
+        text-align: center;
+    }
+    
+    .img_headLogo {
+        height: 70px;
+        border-bottom: 5px solid #FCEE76;
+        display: block;
+    }
+    
+    .img_bkg {
+        background-repeat: no-repeat;
+        background-position: center; 
+        display: block;
+        background-image: url(https://assentopublico.com.br/wp-content/uploads/backup/2018/07/Copa-Cerveja-Brasil-ja%CC%81-tem-mais-de-70-cervejarias-inscritas.jpg);
+        height: 350px;
+    }
+    
+    /*네비게이션 바 (상단, 하단)*/
+    .nav, #right{
+        padding: 5px;
+        height: 30px;
+        margin: 15px 0 0 0;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    .nav ul{
+        overflow: hidden;
+        margin: 0 auto;
+        font-size: 0.75em;
+    }
+    
+    nav{
+        float: right;
+    }
+    
+    nav>ul{
+        width: 500px;
+    }
+    .nav li{
+        list-style: none;
+        float: left;
+        padding: 0 5px;
+        line-height: 30px;
+        width: 50px;
+        margin: 0 auto;
+    }
+    nav a:hover{
+        background-color: #FAF19E;
+        display: block;
+    }
+    
+    /*내용*/
+    article{
+        width: 700px;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    /*푸터*/
+    footer{
+        position: fixed;
+        bottom: 0px;
+    }
+    
+    footer>div {
+        float: left;
+    }
+    
+    #right{
+        position: fixed;
+        right: 30px;
+        font-size: 0.75em;
+        line-height: 30px;
+    }

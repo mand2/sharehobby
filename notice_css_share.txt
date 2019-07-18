@@ -1,0 +1,17 @@
+*** 연동 & 공유할 파일/폴더
+
+
+WebContent 파일에 
+
+ - css 폴더 (css여러개...)
+ - home 폴더 (js, home, join_form,  join_terms, login ) >> 
+
+	terms 가입확인 jQuery + ajax 처리 후 join_form으로 연동하면 됨
+	join_form에서도 jQuery + ajax이용해서 아이디/비번 체크 등등 해서 가입처리하면 됨
+	
+ - index.jsp 파일 (대문이미지 ㅋㅋ 심심해서 전에 만든거 활용ㅋㅋ) 
+	이거 클릭하면 home폴더의 home.jsp로 바로 연동됨
+
+ - 우상단 nav바에서 EXHIBIT 을 누르면 게시판 기본 폼이 나와요
+	제가 제작하고 있는
+	exhibit 폴더 > exhbBoard.jsp를 참고해서 사용하시면 나옵니다.
