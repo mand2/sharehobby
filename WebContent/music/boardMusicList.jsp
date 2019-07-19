@@ -55,6 +55,7 @@
 						<h3 class="viewStatus">등록된 게시글이 없습니다.</h3>	
 						<div id="content-wrap">	
 					<%	} else { %>
+							<p><%=viewData.getPageTotalCount() %>개의 게시글이 있습니다.</p>
 							<table border="1" style="border-collapse:collapse">
 								<thead>
 									<tr>

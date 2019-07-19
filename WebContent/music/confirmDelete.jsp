@@ -5,13 +5,18 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
+	String bmNumstr = request.getParameter("bmNum");
+	int bmNum = 0;
+	
+	if(bmNumstr != null){
+		bmNum = Integer.parseInt(bmNumstr);
+	} else {
+		
+	}
 %>
-
-<jsp:useBean id="post" class="sharehobby.model.BoardPost" />
-<jsp:setProperty property="*" name="post" />
 <%
 	DeletePostListService service = DeletePostListService.getInstance();
-	int rCnt = service.deletePost();
+	int rCnt = service.deletePost(bmNum);
 
 %>
 <!DOCTYPE html>
@@ -25,7 +30,7 @@
 	
 <% 
 	
-	if(cnt>0){
+	if(rCnt>0){
 		
 	%>
 	alert("게시글을 삭제했습니다."); 

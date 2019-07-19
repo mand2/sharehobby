@@ -9,14 +9,13 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 <%	
-	int bmNum = 0;
 	
+	int bmNum = 0;	
 	String str = request.getParameter("bmNum");
 	
 	if(str!=null){
 		bmNum = Integer.parseInt(str);
 	}
-	
 	ShowPostService service = ShowPostService.getInstance();
 	BoardPost post  = service.showPost(bmNum);
 %>
@@ -39,7 +38,8 @@
 						음악 관련 게시판 
 					</div>
 					<form action="confirmModify.jsp" method="post">
-						<table border="1px" style="border-collase:collapse">
+						<table border="1" style="border-collase:collapse">
+							<input type="hidden" name="bmNum" value="<%= bmNum %>">
 							<tr>
 								<th>제목</th>
 								<td style="width: 500px;"><input type="text" value="<%=post.getBmTitle() %>" name="bmTitle"></td>

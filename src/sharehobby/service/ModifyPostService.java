@@ -15,14 +15,13 @@ public class ModifyPostService {
 		return service;
 	}
 	
-	public int modifyPost(int bmNum, BoardPost post) {
+	public int modifyPost(int bmNum, BoardPost currentPost) {
 		int rCnt = 0;
 		Connection conn = null;
 		try {
 			BoardMusicDao dao = BoardMusicDao.getInstance();
 			conn = ConnectionProvider.getConnection();
-			
-			rCnt = dao.modifyPost(conn, bmNum, post);
+			rCnt = dao.modifyPost(conn, bmNum, currentPost);
 		
 		} catch (SQLException e) {
 			e.printStackTrace();

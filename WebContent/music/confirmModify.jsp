@@ -6,11 +6,19 @@
 
 %>
 
-<jsp:useBean id="post" class="sharehobby.model.BoardPost" />
-<jsp:setProperty property="*" name="post" />
+<jsp:useBean id="modifypost" class="sharehobby.model.BoardPost" />
+<jsp:setProperty property="*" name="modifypost" />
+<jsp:setProperty property="*" name="modifypost" />
 <%
+	String bmNumstr = request.getParameter("bmNum");
+	
+	
+	int bmNum = 0;
+	if(bmNumstr!=null){
+		bmNum = Integer.parseInt(bmNumstr);
+	}
 	ModifyPostService service = ModifyPostService.getInstance();
-	int cnt = service.modifyPost(post.getBmNum(),post);
+	int cnt = service.modifyPost(bmNum, modifypost);
 %>
 <!DOCTYPE html>
 <html>

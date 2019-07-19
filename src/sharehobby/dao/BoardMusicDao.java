@@ -38,7 +38,7 @@ public class BoardMusicDao {
 			pstmt.setFloat(4, post.getBmStar());
 			pstmt.setString(5,post.getBmCont());
 //			pstmt.setDate(6, post.getBmTime());
-			
+			System.out.println("insert : "+pstmt);
 			rCnt = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -49,78 +49,7 @@ public class BoardMusicDao {
 				e.printStackTrace();
 			}
 		}
-		
-		
 		return rCnt;
-	}
-	
-	// select 앨범 정보 검색 select
-	public AlbumInfo selectAlbum(Connection conn, int mNum) throws SQLException {
-		AlbumInfo album = null;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "select a.hm_num,m_singer,m_genre,m_name,m_photo from hm_album a, hobby_music h, board_music b where a.hm_num=h.hm_num2 and h.hm_num=b.hm_num and a.hm_num =?";
-		
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1,mNum);
-		
-		rs = pstmt.executeQuery();
-		try {
-		if(rs.next()) {
-			album.setmNum(rs.getInt(1));
-			album.setmSinger(rs.getString(2));
-			album.setmGenre(rs.getString(3));
-			album.setmName(rs.getString(4));
-			album.setmPhoto(rs.getString(4));
-		}
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				rs.close();
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return album;
-		
-	}
-	
-	// 음악 정보 검색 select
-	public MusicInfo selectMusic(Connection conn, int hmNum) throws SQLException {
-		MusicInfo music = null;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "select hm_num,hm_title, hm_lyc from board_music b, hobby_music h where b.hm_num = h.hm_num and b.bm_num=?";
-		
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1,hmNum);
-		
-		rs = pstmt.executeQuery();
-		try {
-		if(rs.next()) {
-			music.setHmNum(rs.getInt(1));
-			music.setHmTitle(rs.getString(2));
-			music.setHmLyc(rs.getString(3));
-		}
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				rs.close();
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return music;
 	}
 	
 	// 리스트 상세보기 select
@@ -291,19 +220,24 @@ public class BoardMusicDao {
 		String sql = "update board_music set hm_num=?,bm_title=?,bm_star=?,bm_cont=? where bm_num=?";
 		
 		try {
-			post = new BoardPost();
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setInt(1, post.getHmNum());
 			pstmt.setString(2, post.getBmTitle());
-			pstmt.setFloat(3, post.getBmStar());
+			pstmt.setFloat(3,post.getBmStar());
 			pstmt.setString(4, post.getBmCont());
-			pstmt.setInt(5, post.getBmNum());
+			pstmt.setInt(5,bmNum);
 			
 			rCnt = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} finally {
-			jdbcUtil.close(pstmt);
+			try {
+				pstmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
 		return rCnt;
 	}
 	
@@ -333,4 +267,75 @@ public class BoardMusicDao {
 		
 		return u_num;
 	}
+	
+	
+	
+	// select 앨범 정보 검색 select
+		public AlbumInfo selectAlbum(Connection conn, int mNum) throws SQLException {
+			AlbumInfo album = null;
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			String sql = "select a.hm_num,m_singer,m_genre,m_name,m_photo from hm_album a, hobby_music h, board_music b where a.hm_num=h.hm_num2 and h.hm_num=b.hm_num and a.hm_num =?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,mNum);
+			
+			rs = pstmt.executeQuery();
+			try {
+			if(rs.next()) {
+				album.setmNum(rs.getInt(1));
+				album.setmSinger(rs.getString(2));
+				album.setmGenre(rs.getString(3));
+				album.setmName(rs.getString(4));
+				album.setmPhoto(rs.getString(4));
+			}
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					rs.close();
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return album;
+			
+		}
+		
+		// 음악 정보 검색 select
+		public MusicInfo selectMusic(Connection conn, int hmNum) throws SQLException {
+			MusicInfo music = null;
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			String sql = "select hm_num,hm_title, hm_lyc from board_music b, hobby_music h where b.hm_num = h.hm_num and b.bm_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,hmNum);
+			
+			rs = pstmt.executeQuery();
+			try {
+			if(rs.next()) {
+				music.setHmNum(rs.getInt(1));
+				music.setHmTitle(rs.getString(2));
+				music.setHmLyc(rs.getString(3));
+			}
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					rs.close();
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return music;
+		}
 }
