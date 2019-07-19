@@ -17,15 +17,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>확인::Share Hobby!</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <style></style>
+
+<script>
+	alert('completed!');
+	location.href="exhbBoard.jsp"; 
+</script>
+
 </head>
 <body>
-	<h1>
+	<%-- <h1>
 		<%= cnt>0 ? "메세지 남김" : "오류"%>
 	</h1>
 	
-	<a href="writeExhbit.jsp">다시쓰기</a>
+	<a href="writeExhbit.jsp">다시쓰기</a> --%>
 </body>
 </html>

@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="jdbc.ConnectionProvider"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -17,8 +21,6 @@
 </head>
 
 <body>
-
-
 <!-- nav 시작 -->
 	<%@ include file="../frame/nav.jsp" %>
 <!-- nav 끝 -->
@@ -40,13 +42,13 @@
                 
                 <div class="warning">
                     <label for="id"><h4>아이디</h4></label>
-                    <span class="inputbox"><input id="id" class="input"></span>
+                    <span class="inputbox"><input id="u_id" class="input"></span>
                     <h5></h5>
                 </div>
                 
                 <div class="warning">
                     <label for="pw"><h4>비밀번호</h4></label>
-                    <span class="inputbox"><input id="pw" class="input"></span>
+                    <span class="inputbox"><input id="u_pw" class="input"></span>
                     <h5></h5>
                 </div>
                 <!-- id pw 저장여부 -->

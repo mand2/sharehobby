@@ -59,8 +59,6 @@ public class ExhibitionDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(pstmt);
 		}
 		
 		
@@ -93,16 +91,11 @@ public class ExhibitionDao {
 				exhbit.setHe_theme(rs.getString(6));
 				
 				list.add(exhbit);
-				
-				
 			}
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
 			
-		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(stmt);
 		}
 		
 		return list;
@@ -132,9 +125,6 @@ public class ExhibitionDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		
-		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
 		}
 		
 		return u_num;
@@ -203,10 +193,6 @@ public class ExhibitionDao {
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
-		
-		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
 		}
 		
 		return list;
@@ -247,5 +233,56 @@ public class ExhibitionDao {
 		return exhb;
 	}//selectMsg()
 	
+	//메세지 삭제
+	public int deleteMsg(Connection conn, int be_num) {
+		int result = 0;
+
+		PreparedStatement pstmt = null;
+		String sql = "delete from board_exhb where be_num = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, be_num);
+			
+			result = pstmt.executeUpdate();
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	//메세지 변경
+	public int updateMsg(Connection conn, BoardExhibition exhbit, int be_num) {
+		int result = 0;
+		
+		String sql = "update board_exhb "
+				   + " set HE_NUM = ? , "
+				   + " BE_TITLE = ? , "
+				   + " BE_STAR = ? , "
+				   + " BE_CONT = ? , "
+				   + " BE_PHOTO = ? "
+				   + " where be_num = ? ";
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(6, be_num);
+			pstmt.setInt(1, exhbit.getHe_num());
+			pstmt.setString(2, exhbit.getBe_title());
+			pstmt.setFloat(3, exhbit.getBe_star());
+			pstmt.setString(4, exhbit.getBe_cont());
+			pstmt.setString(5, exhbit.getBe_photo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 	
 }

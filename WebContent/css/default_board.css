@@ -102,7 +102,8 @@
         margin: 10px auto;
 	}
     
-    #title{
+    #title,
+    #alter{
         height: 30px;
         width: inherit;
     }
@@ -137,7 +138,7 @@
     }
     
     .review > span {
-        display: inline-block;
+        display: block;
         text-align: justify;
         max-height: 70px;
         overflow: hidden;
@@ -178,5 +179,19 @@
         background-color: #FAF19E;
     }
     
+    #alter > span{
+        float: right;
+        line-height: 30px;
+        width: 80px;
+        font-size: 0.85em;
+        text-align: center;
+        background-color: #FAF19E; 
+        box-sizing: border-box;
+        cursor: pointer;
+        margin-top: 20px;
+    }
     
+    #alter > span:first-child {
+		margin-left: 10px;	
+	}
     

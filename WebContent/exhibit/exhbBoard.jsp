@@ -57,7 +57,7 @@ div{width: 400px;}
         
 	        <div id="title">
 	            <h2>전시회 관련 게시판 (총 <%= view.getMsgTotalCnt()%>개)</h2>
-	            <span> 글쓰기 </span>
+	            <span><a href="writeExhbit.jsp">글쓰기</a></span>
 	        </div>
 	   
 		
@@ -65,6 +65,8 @@ div{width: 400px;}
 		/*--show list of msg --*/
 			for(BoardExhibition exhb : view.getMsgList()) {
 		%>
+		
+		<a href="detailReview.jsp?be_num=<%= exhb.getBe_num() %>">
 		<div class="review">
             
             <h6><%= exhb.getBe_num() %> 번째 글</h6>
@@ -75,6 +77,7 @@ div{width: 400px;}
 				작성시간 <%= exhb.getBe_time()%> | 작성자 <%= exhb.getU_num() %>
 			</h5>
 		</div>
+		</a>
 		<% 
 			} 
 		}%>

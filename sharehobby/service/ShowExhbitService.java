@@ -78,5 +78,28 @@ public class ShowExhbitService {
 		
 		return view;
 	}
+	
+	//클릭한 게시글 보기
+	public BoardExhibition getDetailMsg(int num) {
+		Connection conn = null;
+		BoardExhibition exhb = null;
+			
+		
+		try {
+			conn = ConnectionProvider.getConnection();
+			
+			ExhibitionDao dao = ExhibitionDao.getInstance();
+			
+			exhb = dao.selectMsg(conn, num);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return exhb;
+	}
+	
+	
 
 }
