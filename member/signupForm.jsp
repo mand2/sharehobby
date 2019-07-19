@@ -15,7 +15,7 @@
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="email" name="u_id" required></td>
+				<td><input type="text" name="u_id" ></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
