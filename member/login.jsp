@@ -1,3 +1,5 @@
+<%@page import="sharehobby.dao.member.MemberDao"%>
+<%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="jdbc.ConnectionProvider"%>
 <%@page import="java.sql.Connection"%>
@@ -20,42 +22,68 @@
 
 		String u_id = request.getParameter("u_id");
 		String u_pw = request.getParameter("u_pw");
-
-		Connection conn = ConnectionProvider.getConnection();
-
-		String sql = "select * from member where u_id = ? and u_pw = ? ";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-
-		pstmt.setString(1, u_id);
-		pstmt.setString(2, u_pw);
-
-		ResultSet rs = pstmt.executeQuery();
-
 		
-		while (rs.next()) {
+		MemberInfo memberInfo = (MemberInfo) application.getAttribute(u_id);
+		
+		
+		Connection conn = ConnectionProvider.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select u_pw from project.member where u_id = ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, u_id);
+
+			rs = pstmt.executeQuery();
+			
 			String id;
 			String pw;
 
-			id = rs.getString("u_id");
-			pw = rs.getString("u_pw");
+			id = rs.getString(u_id);
+			pw = rs.getString(u_pw);
 
-			if (id.equals(u_id) && pw.equals(u_pw)) {
-				session.setAttribute("u_id", u_id);
+			if (rs.next()) {
+				if (id.equals(u_id) && pw.equals(u_pw)) {
+					session.setAttribute("loginInfo", memberInfo.toLoginInfo());
+					out.println("<script>");
+					out.println("alert('로그인 되었습니다.')");
+					out.println("location.href='../home/home.jsp'");
+					out.println("</script>");
+				}
+			} else {
 				out.println("<script>");
-				out.println("alert('로그인 되었습니다.')");
-				out.println("location.href='index.jsp'");
+				out.println("alert('로그인에 실패했습니다.')");
+				out.println("history.go(-1)");
 				out.println("</script>");
 			}
-		}out.println("<script>");
-		out.println("alert('로그인에 실패했습니다.')");
-		out.println("history.go(-1)");
-		out.println("</script>");
-		
-		rs.close();
-		pstmt.close();
-		conn.close();
-
-		//response.sendRedirect("index.jsp");
+			pstmt.executeUpdate();
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+			}
+		}
 	%>
 
 </body>
