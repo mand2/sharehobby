@@ -13,7 +13,7 @@
 <body>
 	<h3>LOGIN PAGE</h3>
 	
-		<form action="loginProcess.jsp" method="post">
+		<form action="login.jsp" method="post">
 			<table>
 				<tr>
 					<td>ID</td>
