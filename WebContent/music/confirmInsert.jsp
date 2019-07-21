@@ -1,4 +1,4 @@
-<%@page import="sharehobby.service.WritePostService"%>
+<%@page import="sharehobby.service.music.WritePostService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -6,7 +6,7 @@
 
 %>
 
-<jsp:useBean id="post" class="sharehobby.model.BoardPost" />
+<jsp:useBean id="post" class="sharehobby.model.music.BoardPost" />
 <jsp:setProperty property="*" name="post" />
 <%
 	WritePostService writeService = WritePostService.getInstance();

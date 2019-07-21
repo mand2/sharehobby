@@ -1,11 +1,11 @@
-package sharehobby.service;
+package sharehobby.service.music;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import jdbc.ConnectionProvider;
-import sharehobby.dao.MemberDao;
-import sharehobby.model.MemberInfo;
+import sharehobby.dao.music.MemberDao;
+import sharehobby.model.music.MemberInfo;
 
 public class MemberRegService {
 	private static MemberRegService service = new MemberRegService();

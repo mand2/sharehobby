@@ -1,5 +1,6 @@
-<%@page import="sharehobby.service.DeletePostListService"%>
-<%@page import="sharehobby.service.WritePostService"%>
+<%@page import="sharehobby.service.music.PostNotFoundException"%>
+<%@page import="sharehobby.service.music.DeletePostListService"%>
+<%@page import="sharehobby.service.music.WritePostService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -7,6 +8,7 @@
 
 	String bmNumstr = request.getParameter("bmNum");
 	int bmNum = 0;
+	String msg = "";
 	
 	if(bmNumstr != null){
 		bmNum = Integer.parseInt(bmNumstr);
@@ -15,8 +17,16 @@
 	}
 %>
 <%
-	DeletePostListService service = DeletePostListService.getInstance();
-	int rCnt = service.deletePost(bmNum);
+	DeletePostListService service = null;
+	int rCnt = 0;
+	
+	try{
+		service = DeletePostListService.getInstance();
+		rCnt = service.deletePost(bmNum);
+	} catch(PostNotFoundException e){
+		msg = e.getMessage();
+	}
+	
 
 %>
 <!DOCTYPE html>
@@ -27,19 +37,23 @@
 </head>
 <body>
 	<script>
-	
+
+	if(confirm("게시글을 삭제하시겠습니까? (게시글은 복구되지 않습니다.)")){
 <% 
-	
-	if(rCnt>0){
+		if(rCnt>0){
 		
-	%>
-	alert("게시글을 삭제했습니다."); 
+		%>
+		alert("게시글을 삭제했습니다."); 
 	
 	<%} else { %>
-		alert("삭제를 실패했습니다.");
+		alert("<%=msg%>");
 		
 		
 	<%} %>
+	} else {
+		alert("취소했습니다.");
+		history.go(-1);
+	}
 	
 	location.href="boardMusicList.jsp";
 	

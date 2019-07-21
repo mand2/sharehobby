@@ -1,15 +1,15 @@
-<%@page import="sharehobby.service.ShowPostService"%>
-<%@page import="sharehobby.model.LoginInfo"%>
-<%@page import="sharehobby.model.BoardMusicList"%>
-<%@page import="sharehobby.service.BoardMusicListService"%>
-<%@page import="sharehobby.model.BoardPost"%>
-<%@page import="sharehobby.service.WritePostService"%>
+<%@page import="sharehobby.service.music.ShowPostService"%>
+<%@page import="sharehobby.model.music.LoginInfo"%>
+<%@page import="sharehobby.model.music.BoardMusicList"%>
+<%@page import="sharehobby.service.music.BoardMusicListService"%>
+<%@page import="sharehobby.model.music.BoardPost"%>
+<%@page import="sharehobby.service.music.WritePostService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
 <%	
-	
+	String uId = (String)session.getAttribute("u_id");
 	int bmNum = 0;	
 	String str = request.getParameter("bmNum");
 	
@@ -33,6 +33,7 @@
 	<%@include file="../frame/header.jsp" %>
 	<%@include file="../frame/nav.jsp" %>
 		<div id="main">
+			<% if(uId !=null && uId.equals(post.getuId())){ %>
 			<div class="wrap">
 					<div id="title">
 						음악 관련 게시판 
@@ -71,7 +72,12 @@
 						</table>
 					</form>
 			</div>
-				
+		<% } else { %>
+			<script>
+				alert("잘못된 접근입니다.");
+				location.go(-1);
+			</script>
+		<% } %>	
 		</div>
 		<div id="footer">
 		</div>

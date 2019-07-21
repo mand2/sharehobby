@@ -1,11 +1,11 @@
-package sharehobby.service;
+package sharehobby.service.music;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import jdbc.ConnectionProvider;
-import sharehobby.dao.BoardMusicDao;
-import sharehobby.model.BoardPost;
+import sharehobby.dao.music.BoardMusicDao;
+import sharehobby.model.music.BoardPost;
 
 public class ModifyPostService {
 	private static ModifyPostService service = new ModifyPostService();

@@ -1,4 +1,4 @@
-package sharehobby.model;
+package sharehobby.model.music;
 
 public class LoginInfo {
 	private String u_id;

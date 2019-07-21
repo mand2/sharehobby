@@ -2,7 +2,7 @@
 <%@page import="jdbc.ConnectionProvider"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="sharehobby.model.MemberInfo"%>
+<%@page import="sharehobby.model.music.MemberInfo"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>

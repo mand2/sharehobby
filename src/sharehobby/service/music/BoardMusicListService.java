@@ -1,4 +1,4 @@
-package sharehobby.service;
+package sharehobby.service.music;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.List;
 
 import jdbc.ConnectionProvider;
-import sharehobby.dao.BoardMusicDao;
-import sharehobby.model.BoardMusicList;
-import sharehobby.model.BoardPost;
+import sharehobby.dao.music.BoardMusicDao;
+import sharehobby.model.music.BoardMusicList;
+import sharehobby.model.music.BoardPost;
 
 // 게시글 리스트 출력하는 service class
 

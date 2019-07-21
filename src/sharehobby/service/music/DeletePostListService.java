@@ -1,12 +1,12 @@
-package sharehobby.service;
+package sharehobby.service.music;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import jdbc.ConnectionProvider;
 import jdbc.jdbcUtil;
-import sharehobby.dao.BoardMusicDao;
-import sharehobby.model.BoardPost;
+import sharehobby.dao.music.BoardMusicDao;
+import sharehobby.model.music.BoardPost;
 
 public class DeletePostListService {
 	private DeletePostListService() {}
@@ -34,7 +34,7 @@ public class DeletePostListService {
 			if(post != null) {
 				rCnt = dao.deletePost(conn, bmNum);
 			} else { 
-				throw new PostNotFoundException("게시글이 존재하지 않습니다. : " + bmNum);
+				throw new PostNotFoundException("게시글이 존재하지 않습니다. : ");
 			}
 			// 정상 처리
 			conn.commit();
