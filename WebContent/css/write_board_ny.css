@@ -1,0 +1,159 @@
+    @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Pacifico|Roboto:300&display=swap' rel="stylesheet");
+    
+    /* 
+    font-family: 'Pacifico', cursive;
+	font-family: 'Roboto', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
+ 	*/
+    /* 
+    html {
+    	position: relative;
+    	min-height: 100%;
+    } */
+    
+    *{margin:0; padding: 0;}
+    
+    body {
+        min-width: 900px; 
+        font-size: 0.9em;
+        font-family: 'Nanum Gothic', sans-serif;
+        min-height: 100%;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit; 
+        width: inherit;
+    }
+    
+    /*이미지(로고, 배경화면) 작업*/
+    
+    .logo{
+        width: 150px;
+        clear: both;
+        margin-left: 20px; 
+        margin-top: -10px;
+        font-family: 'Pacifico', cursive; font-size: 1.5em;
+        text-align: center;
+    }
+    
+    .img_headLogo {
+        height: 30px;
+        border-bottom: 5px solid #FCEE76;
+        display: block;
+    }
+    
+    
+    /*네비게이션 바 (상단, 하단)*/
+    .nav, #right{
+        padding: 5px;
+        height: 30px;
+        margin: 15px 0 0 0;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    .nav ul{
+        overflow: hidden;
+        margin: 0 auto;
+        font-size: 0.75em;
+    }
+    
+    nav{
+        float: right;
+    }
+    
+    nav>ul{
+        width: 500px;
+    }
+    .nav li{
+        list-style: none;
+        float: left;
+        padding: 0 5px;
+        line-height: 30px;
+        width: 50px;
+        margin: 0 auto;
+    }
+    nav a:hover{
+        background-color: #FAF19E;
+        display: block;
+    }
+    
+    /*푸터*/
+    footer{
+        position: relative;
+        bottom: 0px;
+        height: 30px;
+        margin-top: 100px;
+    }
+    
+    footer>div {
+        float: left;
+    }
+    
+    #right{
+        position: absolute;
+        right: 30px;
+        font-size: 0.75em;
+        line-height: 30px;
+    }
+    
+    /*form*/
+    .wrap {
+        width: 450px;
+        margin: 10px auto;
+	}
+    .wrap h4{
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    
+    #title{
+        height: 30px;
+        text-align: center;
+    }
+    
+    textarea {
+        width: 100%;
+        height: 250px;
+        overflow: auto;
+    }
+    
+    
+    #he_num,
+    #be_title,
+    #be_star {
+        line-height: 30px;
+        height: 34px;
+    }
+    
+    #he_num,
+    #be_star {
+        width: 450px;
+    }
+    
+    #be_title{
+        width: 440px;
+        height: 24px;
+        padding: 3px;
+    }
+    
+    #be_cont {
+        width: 438px;
+        padding: 5px;
+        overflow: auto;
+        font-size: 1em;
+        font-family: 'Nanum Gothic', sans-serif;
+    }
+    
+    #regForm>input[type=submit] {
+        width: 100%;
+        margin: 30px auto;
+        height: 42px;
+        box-sizing: border-box;
+        background-color: #FAF19E;
+        border: 0px;
+        border-radius: 3px;
+        cursor: pointer;
+    } 

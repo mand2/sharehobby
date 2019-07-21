@@ -1,0 +1,40 @@
+    
+    /*---검색---*/
+    #sForm {
+        margin-top: 30px;
+        height: 30px;
+        float: right;
+        width: 341px;
+    }
+    
+    #opt,
+    #condition,
+    #submit {
+        vertical-align: middle;
+        height: 30px;
+        box-sizing: border-box;
+        font-size: 0.85em;
+    }
+       
+    #condition {
+        margin-right: 3px;
+        padding: 2px 5px; 
+        
+    }
+    
+    #submit {
+        float: right;
+        line-height: 30px;
+        width: 80px;
+        text-align: center;
+        background-color: #FAF19E;
+        cursor: pointer;
+    }
+    
+    #sForm>p{
+        text-align: right;
+        color: red;
+    }
+    
+    
+  

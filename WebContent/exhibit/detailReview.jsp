@@ -1,8 +1,8 @@
 <%@page import="jdbc.ConnectionProvider"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="sharehobby.service.ShowExhbitService"%>
-<%@page import="sharehobby.model.BoardExhibition"%>
-<%@page import="sharehobby.dao.ExhibitionDao"%>
+<%@page import="sharehobby.service.exhb.ShowExhbitService"%>
+<%@page import="sharehobby.model.exhb.BoardExhibition"%>
+<%@page import="sharehobby.dao.exhb.ExhibitionDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
@@ -10,14 +10,15 @@
 	request.setCharacterEncoding("utf-8");
 	String num = request.getParameter("be_num");
 	
-	int be_num = 21; 
+	int be_num = 23; 
 	if(num!=null){
 		be_num= Integer.parseInt(num);
 	}
 	
 	ShowExhbitService service = ShowExhbitService.getInstance();
 	
-	BoardExhibition exhb = service.getDetailMsg(be_num);
+	BoardExhibition exhb = service.getDetailMsg(be_num); //review관련
+	BoardExhibition detail = service.getExhbInfo(be_num);
 
 %>
 
@@ -29,16 +30,15 @@
 	ExhibitionDao dao = ExhibitionDao.getInstance(); 
 	
 	int user_num = dao.find_uNum(conn, u_id);
-%>
-
-<%-- <%
+%>  
+<%--  <%
 	String u_id = "aa";
 	
 	Connection conn = ConnectionProvider.getConnection();
 	ExhibitionDao dao = ExhibitionDao.getInstance(); 
 	
 	int user_num = dao.find_uNum(conn, u_id);
-%> --%>
+%>  --%>
 
 <!DOCTYPE html>
 <html>
@@ -46,7 +46,8 @@
 <meta charset="UTF-8">
 <title>게시글보기::Share Hobby!</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<link href="/sh/css/default_board.css" rel="stylesheet" type="text/css">
+<link href="/sh/css/default_board_ny.css" rel="stylesheet" type="text/css">
+<link href="/sh/css/details_board_ny.css" rel="stylesheet" type="text/css">
 <style></style>
 
 <script>
@@ -72,6 +73,17 @@
 				}
 			});//ajax	
 		});
+		
+		$('#info').click(function() {
+			var chk = $('#chk').prop('checked');
+            
+            if(chk){
+                $('#detailInfo').css('display', 'block');
+            } else {
+                $('#detailInfo').css('display', 'none');
+            }
+		});
+		
 	});
 </script> 
 
@@ -96,12 +108,12 @@
 	    </div>
 		<div class="review">
             
-            <h6><%= exhb.getBe_num() %> 번째 글</h6>
+            <h6><%= be_num %> 번째 글 | 조회수 <%= exhb.getBe_hit() +1%></h6>
             <h3><%= exhb.getBe_title() %></h3>
 			<h5>
 				작성시간 <%= exhb.getBe_time()%> | 작성자 <%= exhb.getU_num() %>
 			</h5>
-			<span class="star">전시코드 <%= exhb.getHe_num() %> | 평점 <%= exhb.getBe_star() %> </span>
+			<span class="star">전시명 <%= detail.getHe_name() %> | 평점 <%= exhb.getBe_star() %> </span>
 			<p><%= exhb.getBe_cont() %></p>
 			<span class="star">사진 <%= exhb.getBe_photo() %></span>
 		</div>
@@ -119,6 +131,55 @@
 		<%
 			}
 		%>
+		
+		
+		<!-- 전시정보 -->        
+        <label for="chk"><span id="info" name="info" class="tooltip">전시회 관련 정보
+            <input type="checkbox" id="chk">
+            <span class="tooltiptext">click!</span>
+        </span></label>
+        <div id="detailInfo" name="detailInfo" >
+                <h2>전시정보</h2>
+                <div class="detailwrap">
+
+                    <div class="details">
+                        <h4>전시명</h4>
+                        <span class="inputbox"><%= detail.getHe_name() %></span>
+                    </div>
+                    <div class="details">
+                        <h4>작가</h4>
+                        <span class="inputbox"><%= detail.getHe_artist() %></span>
+                    </div>
+                    <div class="details">
+                        <h4>내용</h4>
+                        <span class="inputbox"><%= detail.getHe_cont() %></span>
+                    </div>
+                    <div class="details">
+                        <h4>테마</h4>
+                        <span class="inputbox"><%= detail.getHe_theme() %></span>
+                    </div>
+                </div>
+                <div class="detailwrap">
+
+                    <div class="details">
+                        <h4>장소명</h4>
+                        <span class="inputbox"><%= detail.getE_name() %></span>
+                    </div>
+                    <div class="details">
+                        <h4>주소</h4>
+                        <span class="inputbox"><%= detail.getE_address() %></span>
+                    </div>
+                    <div class="details">
+                        <h4>전화번호</h4>
+                        <span class="inputbox"><%= detail.getE_pnum() %></span>
+                    </div>
+                </div>
+            
+        </div><!--전시정보 전체 wrap끝-->
+		
+		<!-- comment -->
+		<%@ include file="writeComment.jsp" %>
+		
 	</div>
 
 <!-- contents 끝 -->

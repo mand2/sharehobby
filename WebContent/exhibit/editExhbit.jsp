@@ -1,13 +1,14 @@
-<%@page import="sharehobby.service.AlterExhbitService"%>
-<%@page import="sharehobby.model.BoardExhibition"%>
-<%@page import="sharehobby.service.ShowExhbitService"%>
-<%@page import="sharehobby.dao.ExhibitionDao"%>
+<%@page import="sharehobby.model.exhb.Exhibition"%>
+<%@page import="sharehobby.service.exhb.AlterExhbitService"%>
+<%@page import="sharehobby.model.exhb.BoardExhibition"%>
+<%@page import="sharehobby.service.exhb.ShowExhbitService"%>
+<%@page import="sharehobby.dao.exhb.ExhibitionDao"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="jdbc.ConnectionProvider"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-<jsp:useBean id="exhbit" class="sharehobby.model.BoardExhibition"/>
+<jsp:useBean id="exhbit" class="sharehobby.model.exhb.BoardExhibition"/>
 <jsp:setProperty property="*" name="exhbit"/>    
 <%
 	String num = request.getParameter("be_num");
@@ -31,7 +32,7 @@
 <title>리뷰수정::Share Hobby!</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-<link href="/sh/css/default_board.css" rel="stylesheet" type="text/css">
+<link href="/sh/css/default_board_ny.css" rel="stylesheet" type="text/css">
 
 
 <script>
@@ -88,13 +89,15 @@
 		            <h3>
 		            	<input type="text" name="be_title" value="<%= exhb.getBe_title() %>">
 		            </h3>
-					전시코드 
+					전시명 
 						<select name="he_num" required>
-							<option value="1001">1001</option>
-							<option value="1002">1002</option>
-							<option value="2001">2001</option>
-							<option value="2002">2002</option>
-							<option value="3001">3001</option>
+						<option selected="selected" disabled="disabled">선택하세요</option>
+						<%
+							/*--show list of msg --*/					
+											for(Exhibition e_name : service.getListExhbName()) {
+						%>
+								<option value="<%= e_name.getHe_num()%>"><%= e_name.getHe_name() %> | <%= e_name.getHe_artist()%> </option>
+							<% } %>
 						</select>
 					<br>
 					평점 <input type="number" name="be_star" min="1" max="5">

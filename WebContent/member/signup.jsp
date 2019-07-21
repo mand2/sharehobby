@@ -1,10 +1,10 @@
-<%@page import="sharehobby.service.MemberRegService"%>
+<%@page import="sharehobby.service.member.MemberRegService"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="memberInfo" class="sharehobby.model.MemberInfo"/>
+<jsp:useBean id="memberInfo" class="sharehobby.model.member.MemberInfo"/>
 <jsp:setProperty property="*" name="memberInfo"/>
 <%
 	MemberRegService service = MemberRegService.getInstance();

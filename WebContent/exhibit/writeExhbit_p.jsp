@@ -1,10 +1,10 @@
-<%@page import="sharehobby.service.WriteExhbitService"%>
+<%@page import="sharehobby.service.exhb.WriteExhbitService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="exhbit" class="sharehobby.model.BoardExhibition"/>
+<jsp:useBean id="exhbit" class="sharehobby.model.exhb.BoardExhibition"/>
 <jsp:setProperty property="*" name="exhbit"/>
 
 <%

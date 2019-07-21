@@ -1,12 +1,12 @@
-<%@page import="sharehobby.model.BoardExhibition"%>
-<%@page import="sharehobby.service.AlterExhbitService"%>
+<%@page import="sharehobby.model.exhb.BoardExhibition"%>
+<%@page import="sharehobby.service.exhb.AlterExhbitService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page trimDirectiveWhitespaces="true" %>    
 <%
-	request.setCharacterEncoding("utf-8");
-%>
-<jsp:useBean id="exhbit" class="sharehobby.model.BoardExhibition"/>
+    	request.setCharacterEncoding("utf-8");
+    %>
+<jsp:useBean id="exhbit" class="sharehobby.model.exhb.BoardExhibition"/>
 <jsp:setProperty property="*" name="exhbit"/>    
 
 <%

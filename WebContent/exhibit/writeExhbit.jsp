@@ -1,5 +1,5 @@
-<%@page import="sharehobby.model.Exhibition"%>
-<%@page import="sharehobby.dao.ExhibitionDao"%>
+<%@page import="sharehobby.model.exhb.Exhibition"%>
+<%@page import="sharehobby.dao.exhb.ExhibitionDao"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="jdbc.ConnectionProvider"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,8 +14,6 @@
 	
 	int u_num = dao.find_uNum(conn, u_id);
 	
-	/* 현재 전시중인 리스트 */
-	
 %>
 
 
@@ -26,7 +24,7 @@
 <meta charset="UTF-8">
 <title>후기_전시::Share Hobby!</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<link href="/sh/css/default_board.css" rel="stylesheet" type="text/css">
+<link href="/sh/css/write_board_ny.css" rel="stylesheet" type="text/css">
 
 <style></style>
 </head>
@@ -42,58 +40,70 @@
 
 <!-- contents 시작 -->
     
-
-<h1>전시회 후기</h1>
-<hr>
-<form action="writeExhbit_p.jsp" method="post">
-	<table>
-		<tr>
-			<td></td> <!-- 삭제해야할요소 확인용임 -->
-			<td><input type="hidden" name="u_num" value=<%=u_num %>>
-			</td>
-		</tr>
-		<tr>
-			<td>전시명</td> <!-- 전시코드에서 넘어와서 연결해줘야함 -->
-			<td>
-				<select name="he_num" required>
-					<option selected="selected" disabled="disabled">선택하세요</option>
-				<%
-				/*--show list of msg --*/					
-					for(Exhibition exhb : dao.showEnumList(conn)) {
-				%>
-					<option value="<%= exhb.getHe_num()%>"><%= exhb.getHe_name() %> | <%= exhb.getHe_artist()%></option>
-				<% } %>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>제목</td>
-			<td><input type="text" name="be_title" required></td>
-		</tr>
-		<tr>
-			<td>평점</td>
-			<td>
-				<select name="be_star">
-					<option selected="selected" disabled="disabled">선택하세요</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>내용</td>
-			<td><textarea rows="25" cols="80" name="be_cont" required></textarea></td>
-		</tr>
-		<tr>
-			<td>사진</td>
-			<td><input type="file" name="be_photo"></td>
-		</tr>
-		
-	</table>
-		<input type="submit" value="제출">
+<div class = "wrap">
+	<div id="title">
+	    <h2>전시회 후기 쓰기</h2>
+	</div>
+	
+	<form action="writeExhbit_p.jsp" method="post">
+        <input type="hidden" name="u_num" value=<%=u_num %>>
+        <div id="regForm">
+        	<div class="warning">
+                    <label for="he_num"><h4>전시명</h4></label>
+                    <span class="inputbox">
+                        <select name="he_num" id="he_num">
+                        	<option selected="selected" disabled="disabled">선택하세요</option>
+						<%
+						/*--show list of msg --*/					
+							for(Exhibition exhb : dao.showEnumList(conn)) {
+						%>
+                            <option value="<%= exhb.getHe_num()%>"><%= exhb.getHe_name() %> | <%= exhb.getHe_artist()%> </option>
+						<% } %>
+                        </select>
+                    </span>
+                    <h5></h5>
+                </div>
+                
+                <div class="warning">
+                    <label for="be_title"><h4>제목</h4></label>
+                    <span class="inputbox"><input type="text" name="be_title" id="be_title"></span>
+                    <h5></h5>
+                </div>
+                
+                <div class="warning">
+                    <label for="be_star"><h4>평점</h4></label>
+                    <span class="inputbox">
+                        <select name="be_star" id="be_star">
+                            <option selected="selected" disabled="disabled">선택하세요</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </span>
+                    <h5></h5>
+                </div>
+                
+                <div class="warning">
+                    <label for="name"><h4>내용</h4></label>
+                    <span class="inputbox">
+                            <textarea name="be_cont" id="be_cont"></textarea>
+                    </span>
+                    <h5></h5>
+                </div>
+                
+                <div class="warning">
+                    <label for="phone"><h4>사진</h4></label>
+                    <span class="inputbox"><input type="file" name="be_photo"class="input"></span>
+                    <h5></h5>
+                </div>
+                
+                <input type="submit" value="제출">
+            </div>
+        </form>
+    </div>
+        
 <!-- contents 끝 -->
 		
 <!-- footer 시작 -->
