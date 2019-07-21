@@ -1,21 +1,21 @@
-package sharehobby.service;
+package sharehobby.service.member;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import jdbc.ConnectionProvider;
-import sharehobby.dao.MemberDao;
-import sharehobby.model.LoginInfo;
+import sharehobby.dao.exhb.MemberDao;
+import sharehobby.model.member.MemberInfo;
 
-public class LoginService {
-	private static LoginService service = new LoginService();
-	public static LoginService getInstance() {
+public class MemberRegService {
+	private static MemberRegService service = new MemberRegService();
+	public static MemberRegService getInstance() {
 		return service;
 	}
 	
-	private LoginService() {};
+	private MemberRegService() {};
 	
-	public int select(LoginInfo loginInfo) {
+	public int reg(MemberInfo memberInfo) {
 		int rCnt = 0;
 		
 		Connection conn = null;
@@ -25,7 +25,7 @@ public class LoginService {
 			
 			MemberDao dao = MemberDao.getInstance();
 			
-			rCnt = dao.select(conn, loginInfo);
+			rCnt = dao.insert(conn, memberInfo);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

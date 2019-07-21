@@ -1,4 +1,4 @@
-package sharehobby.service;
+package sharehobby.service.exhb;
 /*-------------------
  * 파일이름: WriteExhbitService.java
  * 파일설명: 게시판에 글 쓰기 Service
@@ -16,8 +16,8 @@ import java.sql.SQLException;
 
 import jdbc.ConnectionProvider;
 import jdbc.JdbcUtil;
-import sharehobby.dao.ExhibitionDao;
-import sharehobby.model.BoardExhibition;
+import sharehobby.dao.exhb.ExhibitionDao;
+import sharehobby.model.exhb.BoardExhibition;
 
 public class WriteExhbitService {
 	

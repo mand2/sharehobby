@@ -1,4 +1,4 @@
-package sharehobby.model;
+package sharehobby.model.exhb;
 /*-------------------
  * 파일이름: Exhibition.java
  * 파일설명: 전시회 객체 VO(model) 
@@ -14,20 +14,26 @@ package sharehobby.model;
 
 import java.util.Date;
 
-public class BoardExhibition {
+public class BoardExhibition extends Exhibition{
 	
 	
 	private int be_num; //게시글번호
 	private int u_num; //회원번호 < member에서 가져와야함 session에서 연결
-	private int he_num; //전시코드 < 전시코드객체에서 가져와야함
 	private String be_title; //제목
 	private Date be_time; //작성시간
 	private float be_star; //평점
 	private String be_cont; //내용
 	private String be_photo; //사진
+	private int be_hit; //조회수
 	
 	
 	
+	public int getBe_hit() {
+		return be_hit;
+	}
+	public void setBe_hit(int be_hit) {
+		this.be_hit = be_hit;
+	}
 	public int getBe_num() {
 		return be_num;
 	}
@@ -39,12 +45,6 @@ public class BoardExhibition {
 	}
 	public void setU_num(int u_num) {
 		this.u_num = u_num;
-	}
-	public int getHe_num() {
-		return he_num;
-	}
-	public void setHe_num(int he_num) {
-		this.he_num = he_num;
 	}
 	public String getBe_title() {
 		return be_title;

@@ -1,4 +1,4 @@
-package sharehobby.model;
+package sharehobby.model.exhb;
 /*-------------------
  * 파일이름: ExhibitionPlace.java
  * 파일설명: 전시회 상위클래스인 전시장소 VO(model) 
@@ -33,6 +33,15 @@ public class ExhibitionPlace {
 	}
 	public String getE_pnum() {
 		return e_pnum;
+	}
+	public void setE_name(String e_name) {
+		this.e_name = e_name;
+	}
+	public void setE_address(String e_address) {
+		this.e_address = e_address;
+	}
+	public void setE_pnum(String e_pnum) {
+		this.e_pnum = e_pnum;
 	}
 	
 	

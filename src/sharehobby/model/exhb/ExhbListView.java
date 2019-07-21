@@ -1,4 +1,4 @@
-package sharehobby.model;
+package sharehobby.model.exhb;
 /*-------------------
  * 파일이름: ExhbitListView.java
  * 파일설명: 전시회 게시판 기본 VO(model) 

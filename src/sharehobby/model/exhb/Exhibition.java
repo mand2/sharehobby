@@ -1,4 +1,4 @@
-package sharehobby.model;
+package sharehobby.model.exhb;
 
 public class Exhibition extends ExhibitionPlace{
 	

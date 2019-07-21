@@ -1,4 +1,4 @@
-package sharehobby.model;
+package sharehobby.model.member;
 
 public class LoginInfo {
 	private String u_id;

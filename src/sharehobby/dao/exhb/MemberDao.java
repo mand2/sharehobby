@@ -1,4 +1,4 @@
-package sharehobby.dao;
+package sharehobby.dao.exhb;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
-import sharehobby.model.LoginInfo;
-import sharehobby.model.MemberInfo;
+import sharehobby.model.member.LoginInfo;
+import sharehobby.model.member.MemberInfo;
 
 
 public class MemberDao {
