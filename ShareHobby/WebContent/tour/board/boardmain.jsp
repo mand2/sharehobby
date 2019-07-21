@@ -98,11 +98,19 @@ body {
 }
 #content {
 	float: left;
-	margin: 20px;
+	margin: 40px 10px;
+	border-bottom: 1px solid #DDD;
 }
-#sform {
-	margin: 10px 0;
+
+#content>img {
+	float: left;
+	margin: 0 20px;
 }
+#content>a {
+	margin-left: 300px;
+	margin-bottom: 10px;
+}
+
 </style>
 </head>
 <body>
@@ -123,20 +131,21 @@ body {
 				<p class="lead">리뷰를 남겨주세요.</p>
 				<a href="CreateBoard.jsp" class="btn btn-primary btn-lg">리뷰 작성</a>
 			</div>
+			<hr>
 
 				<%
 					if (viewData.isEmpty()) {
 				%>
-						<h3>등록된 메시지가 없습니다.</h3>
+						<h3>등록된 리뷰가 없습니다.</h3>
 				<%
 					} else {
 
 						for (Board board : viewData.getBoardList()) {
 				%>
 			<div id="content">
-          			<img src="<%=board.getPhoto()%>" width="200px" height="200px">
-          			<h5><%=board.getU_id() %>님의 리뷰</h5> <br>
-            		<h4><%=board.getTitle()%></h4> <img src="../image/star2.png" width="25px" height="25px"><%=board.getStar()%><br>
+          			<img src="<%=board.getPhoto()%>" width="250px" height="280px">
+          			<h5><%=board.getU_id() %>님의 리뷰</h5> <img src="../image/star2.png" width="25px" height="25px"><%=board.getStar()%><br><br>
+            		<h4><%=board.getTitle()%></h4> <br>
             		<p><%=board.getContent()%></p> <br>
             		<a href="DetailBoard.jsp?pk=<%=board.getPk()%>" class="btn btn-primary">자세한 리뷰 보기</a>
 			</div>

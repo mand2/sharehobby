@@ -100,13 +100,16 @@ label {
 table {
 	width: 800px;
 	heght: 800px;
-	
 }
 
-#content {
-	width: 600px;
-	height: 700px;
-	margin: 10px 5px;
+table td {
+	border: 1px solid #ddd;
+}
+
+
+img {
+	width: 400px;
+	height: 400px;
 }
 
 

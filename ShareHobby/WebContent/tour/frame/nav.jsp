@@ -20,7 +20,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<%= request.getContextPath() %>/tour/tourmain.jsp">Tour</a>
+            <a class="nav-link" href="<%= request.getContextPath() %>/tour/tourinfo/tourmain.jsp">Tour</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<%= request.getContextPath() %>/tour/board/boardmain.jsp">Review</a>

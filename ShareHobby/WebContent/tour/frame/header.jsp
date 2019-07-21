@@ -3,7 +3,7 @@
 <!-- Jumbotron Header -->
 
 <div id="header">
-	<img src="../image/ㅋ.png" width="800px" heigh="500px">
+	<img src="../image/ㅋ.png" width="800px" heigh="400px">
 </div>
 
 <style>

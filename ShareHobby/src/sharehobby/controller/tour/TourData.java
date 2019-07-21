@@ -19,7 +19,7 @@ import org.json.simple.JSONObject;
 /**
  * Servlet implementation class TourData
  */
-@WebServlet("/")
+@WebServlet("/tour/tourinfo/TourData.jsp")
 public class TourData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -38,6 +38,9 @@ public class TourData extends HttpServlet {
         // TODO Auto-generated method stub
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
+
+        
+        
         
 		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/RusService/areaBasedList?serviceKey=";
 		String serviceKey = "%2BaXZ%2B71EvGvZgAqY9aGBaRswCeT6JCSmfbyw%2F3K0xubpjSDBJ85%2Fy%2Fdlysm4p8hB3ctvQnECLz875rIiHpVABw%3D%3D";
@@ -47,16 +50,16 @@ public class TourData extends HttpServlet {
 		
         PrintWriter out = response.getWriter();
 //        parameter = parameter + "&" + "contentId=1891502";
-//        parameter = parameter + "&" + "contentTypeId=76";
+        parameter = parameter + "&" + "contentTypeId=76";
+        parameter = parameter + "&" + "areaCode="+1;
+        parameter = parameter + "&" + "sigunguCode=23&cat1=&cat2=&cat3=";
         parameter = parameter + "&" + "listYN=Y";
         parameter = parameter + "&" + "arrange=A";
-        parameter = parameter + "&" + "areaCode=35";
-        parameter = parameter + "&" + "pageNo=1&numOfRows=10";
+        parameter = parameter + "&" + "pageNo=1&numOfRows=12";
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=Apptest";
         parameter = parameter + "&" + "_type=json";
-        
-        
+   
         addr = addr + serviceKey + parameter;
         URL url = new URL(addr);
         

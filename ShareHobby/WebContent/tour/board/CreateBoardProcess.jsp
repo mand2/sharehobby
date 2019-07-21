@@ -115,7 +115,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script>
 	<% if(cnt>0) { %>
-		window.location="boardmain.jsp";
+		history.back(-2);
 	<% } else { %>
 		alert('다시 입력해주세요.');
 		history.back();

@@ -63,9 +63,9 @@ public class DBCPInit extends HttpServlet {
 			poolConfig.setTestWhileIdle(true);
 		
 			//커넥션 최소 개수
-			poolConfig.setMinIdle(5); 
+			poolConfig.setMinIdle(2); 
 			//커넥션 최대 개수
-			poolConfig.setMaxTotal(50);
+			poolConfig.setMaxTotal(10);
 			
 			//커넥션 풀을 생성. 생성자는 PoolabeConnectionFactory와 GenericObjectPoolConfig를 사용
 			GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(poolableConnFactory, poolConfig);
