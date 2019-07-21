@@ -57,13 +57,13 @@ public class DBCPInit extends HttpServlet {
 			GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
 			
 			//유휴 커넥션 검사 주기
-			poolConfig.setTimeBetweenEvictionRunsMillis(1000L * 60L * 5L);
-			
+//			poolConfig.setTimeBetweenEvictionRunsMillis(1000L * 60L * 5L);
+			poolConfig.setTimeBetweenEvictionRunsMillis(5L);
 			//풀에 보관중인 커넥션이 유효한지 검사할지 유무 설정
 			poolConfig.setTestWhileIdle(true);
 		
 			//커넥션 최소 개수
-			poolConfig.setMinIdle(4); 
+			poolConfig.setMinIdle(5); 
 			//커넥션 최대 개수
 			poolConfig.setMaxTotal(50);
 			
@@ -75,7 +75,6 @@ public class DBCPInit extends HttpServlet {
 			
 			//커넥션 풀을 제공하는 jdbc 드라이버를 등록.
 			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
-			
 			
 			PoolingDriver driver = (PoolingDriver) DriverManager.getDriver("jdbc:apache:commons:dbcp:");
 			System.out.println("컨넥션 풀 등록 완료");

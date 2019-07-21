@@ -1,11 +1,11 @@
-<%@page import="sharehobby.service.UpdateBoardService"%>
+<%@page import="sharehobby.service.tour.UpdateBoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="board" class="sharehobby.model.Board" />
+<jsp:useBean id="board" class="sharehobby.model.tour.Board" />
 <jsp:setProperty property="*" name="board"/>
 <%
 	UpdateBoardService service = UpdateBoardService.getInstance();

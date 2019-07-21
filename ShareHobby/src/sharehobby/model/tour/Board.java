@@ -1,18 +1,23 @@
-package sharehobby.model;
+package sharehobby.model.tour;
 
 import java.util.Date;
 
 public class Board {
 
 	private int pk;
+	private String u_id;
 	private String title;
 	private String content;
 	private String photo;
 	private float star;
 	
-
 	
-	
+	public String getU_id() {
+		return u_id;
+	}
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
+	}
 	public int getPk() {
 		return pk;
 	}

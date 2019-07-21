@@ -1,5 +1,5 @@
-<%@page import="sharehobby.service.BoardNotFoundException"%>
-<%@page import="sharehobby.service.DeleteBoardService"%>
+<%@page import="sharehobby.service.tour.BoardNotFoundException"%>
+<%@page import="sharehobby.service.tour.DeleteBoardService"%>
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

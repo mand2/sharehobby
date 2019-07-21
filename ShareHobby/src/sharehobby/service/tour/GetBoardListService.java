@@ -1,4 +1,4 @@
-package sharehobby.service;
+package sharehobby.service.tour;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.List;
 
 import jdbc.ConnectionProvider;
-import sharehobby.dao.BoardDao;
-import sharehobby.model.Board;
-import sharehobby.model.BoardListView;
+import sharehobby.dao.tour.BoardDao;
+import sharehobby.model.tour.Board;
+import sharehobby.model.tour.BoardListView;
 
 public class GetBoardListService {
 

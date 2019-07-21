@@ -1,4 +1,4 @@
-package sharehobby.service;
+package sharehobby.service.tour;
 
 public class BoardNotFoundException extends Exception {
 

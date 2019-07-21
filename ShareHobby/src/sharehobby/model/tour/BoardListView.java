@@ -1,4 +1,4 @@
-package sharehobby.model;
+package sharehobby.model.tour;
 
 import java.util.List;
 

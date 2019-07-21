@@ -1,12 +1,12 @@
-package sharehobby.service;
+package sharehobby.service.tour;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import jdbc.ConnectionProvider;
 import jdbc.jdbcUtil;
-import sharehobby.dao.BoardDao;
-import sharehobby.model.Board;
+import sharehobby.dao.tour.BoardDao;
+import sharehobby.model.tour.Board;
 
 public class UpdateBoardService {
 

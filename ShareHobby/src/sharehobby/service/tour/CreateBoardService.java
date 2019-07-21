@@ -1,11 +1,11 @@
-package sharehobby.service;
+package sharehobby.service.tour;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import jdbc.ConnectionProvider;
-import sharehobby.dao.BoardDao;
-import sharehobby.model.Board;
+import sharehobby.dao.tour.BoardDao;
+import sharehobby.model.tour.Board;
 
 public class CreateBoardService {
 
@@ -20,7 +20,7 @@ public class CreateBoardService {
 	// 생성자 제한
 	private CreateBoardService() {}
 	
-	public int write(Board board) {
+	public int write(Board board, int u_num) {
 		
 		int rCnt = 0;
 		
@@ -35,7 +35,7 @@ public class CreateBoardService {
 			
 			BoardDao dao = BoardDao.getInstance();
 			
-			rCnt = dao.insert(conn, board);
+			rCnt = dao.insert(conn, board, u_num);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
