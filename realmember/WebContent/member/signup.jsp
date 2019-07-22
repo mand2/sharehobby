@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="utf-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("UTF--8");
 %>
 <jsp:useBean id="memberInfo" class="sharehobby.model.member.MemberInfo" />
 <jsp:setProperty property="*" name="memberInfo" />

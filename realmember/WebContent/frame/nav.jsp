@@ -6,13 +6,13 @@
 	<ul>
 		<li><a href="${pageContext.request.contextPath}/home/home.jsp">HOME</a></li>
 
-		
+
 		<li><a
 			href="${pageContext.request.contextPath}/exhibit/exhbBoard.jsp">EXHIBIT</a></li>
-			<li><a
+		<li><a
 			href="${pageContext.request.contextPath}/member/member.jsp">MEMBER</a></li>
 		<%
-			if (session.getAttribute("sessionId") == null) {
+			if (session.getAttribute("u_id") == null) {
 		%>
 		<c:if test="${loginInfo == null}">
 			<li><a href="${pageContext.request.contextPath}/home/login.jsp">LOGIN</a></li>
@@ -27,7 +27,7 @@
 			href="${pageContext.request.contextPath}/member/mypage.jsp">MYPAGE</a></li>
 		<li><a
 			href="${pageContext.request.contextPath}/member/logout.jsp">LOGOUT</a></li>
-		<li><span><%=session.getAttribute("sessionId")%>님</span></li>
+		<li><span><%=session.getAttribute("u_id")%>님</span></li>
 		<%
 			}
 		%>

@@ -6,14 +6,14 @@
 	pageEncoding="utf-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-		String id = (String) session.getAttribute("u_id");
-		int u_num = Integer.parseInt(request.getParameter("u_num"));
-		String u_pw = request.getParameter("u_pw");
+	String id = (String) session.getAttribute("u_id");
+	int u_num = Integer.parseInt(request.getParameter("u_num"));
+	String u_pw = request.getParameter("u_pw");
 
-		UpdateMemberService service = UpdateMemberService.getInstance();
+	UpdateMemberService service = UpdateMemberService.getInstance();
 
-		MemberDao dao = MemberDao.getInstance();
-	%>
+	MemberDao dao = MemberDao.getInstance();
+%>
 <!DOCTYPE html>
 <html>
 <head>
