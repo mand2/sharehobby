@@ -52,7 +52,6 @@ public class DeleteExhbitService {
 			e.printStackTrace();
 		}
 		
-		
 		return result;
 		
 	}

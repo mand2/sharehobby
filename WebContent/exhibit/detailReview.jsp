@@ -10,7 +10,7 @@
 	request.setCharacterEncoding("utf-8");
 	String num = request.getParameter("be_num");
 	
-	int be_num = 23; 
+	int be_num = 142; 
 	if(num!=null){
 		be_num= Integer.parseInt(num);
 	}
@@ -23,22 +23,22 @@
 %>
 
 <!-- 작성자와 보는사람 아이디 비교 -->
-<%
+<%-- <%
 	String u_id = (String)session.getAttribute("u_id");
 
 	Connection conn = ConnectionProvider.getConnection();
 	ExhibitionDao dao = ExhibitionDao.getInstance(); 
 	
 	int user_num = dao.find_uNum(conn, u_id);
-%>  
-<%--  <%
+%>   --%>
+<%
 	String u_id = "aa";
 	
 	Connection conn = ConnectionProvider.getConnection();
 	ExhibitionDao dao = ExhibitionDao.getInstance(); 
 	
 	int user_num = dao.find_uNum(conn, u_id);
-%>  --%>
+%>
 
 <!DOCTYPE html>
 <html>
@@ -115,7 +115,7 @@
 			</h5>
 			<span class="star">전시명 <%= detail.getHe_name() %> | 평점 <%= exhb.getBe_star() %> </span>
 			<p><%= exhb.getBe_cont() %></p>
-			<span class="star">사진 <%= exhb.getBe_photo() %></span>
+				<img src="<%= exhb.getBe_photo() %>" style="width: 200px;">
 		</div>
 		
 		
@@ -140,8 +140,11 @@
         </span></label>
         <div id="detailInfo" name="detailInfo" >
                 <h2>전시정보</h2>
+				<!-- map -->
+				<%@ include file="exhbMap.jsp" %>
+				
                 <div class="detailwrap">
-
+				
                     <div class="details">
                         <h4>전시명</h4>
                         <span class="inputbox"><%= detail.getHe_name() %></span>

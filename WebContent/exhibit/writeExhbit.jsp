@@ -1,3 +1,4 @@
+<%@page import="sharehobby.service.exhb.ShowExhbitService"%>
 <%@page import="sharehobby.model.exhb.Exhibition"%>
 <%@page import="sharehobby.dao.exhb.ExhibitionDao"%>
 <%@page import="java.sql.Connection"%>
@@ -6,16 +7,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
-<%
-	String u_id = (String)session.getAttribute("u_id");
-
-	Connection conn = ConnectionProvider.getConnection();
-	ExhibitionDao dao = ExhibitionDao.getInstance(); 
-	
-	int u_num = dao.find_uNum(conn, u_id);
-	
+<% 
+	ShowExhbitService service = ShowExhbitService.getInstance();
 %>
-
 
 
 <!DOCTYPE html>
@@ -45,8 +39,8 @@
 	    <h2>전시회 후기 쓰기</h2>
 	</div>
 	
-	<form action="writeExhbit_p.jsp" method="post">
-        <input type="hidden" name="u_num" value=<%=u_num %>>
+	<form action="writeExhbit_p.jsp" method="post" enctype="multipart/form-data">
+        <%-- <input type="hidden" name="u_num" value=<%=u_num %>> --%>
         <div id="regForm">
         	<div class="warning">
                     <label for="he_num"><h4>전시명</h4></label>
@@ -55,7 +49,7 @@
                         	<option selected="selected" disabled="disabled">선택하세요</option>
 						<%
 						/*--show list of msg --*/					
-							for(Exhibition exhb : dao.showEnumList(conn)) {
+							for(Exhibition exhb : service.getListExhbName()) {
 						%>
                             <option value="<%= exhb.getHe_num()%>"><%= exhb.getHe_name() %> | <%= exhb.getHe_artist()%> </option>
 						<% } %>

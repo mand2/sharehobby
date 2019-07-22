@@ -6,7 +6,6 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%
 	request.setCharacterEncoding("utf-8"); 
 %>
@@ -143,10 +142,11 @@
         		int level = comment.getBc_level();
         		int depth = 580 - ( (level-1) * 30 );
         %>
+
         <!-- 완료된것 -->
-        <div class="reply" style="width:<%= depth %>;">
+        <div class="reply" style="width:<%= depth %>px;">
             <div class="info">
-                <h4><%=comment.getU_num() %> &nbsp; <%= comment.getBc_date() %></h4>
+                <h4> 작성자 <%=comment.getU_num() %> |&nbsp; <%= comment.getBc_date() %></h4>
             </div>
             <div id="contents"><%= comment.getBc_cont() %></div>
             

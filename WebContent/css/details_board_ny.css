@@ -12,9 +12,13 @@
     margin-top: 30px;
 }
 
+#map {
+	margin: 20px;
+}
+
 #detailInfo {
     padding: 30px;
-    min-height: 300px;      
+    min-height: 550px;      
     border: 1px solid #FAF19E;
     display: none;
 }

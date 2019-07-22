@@ -104,7 +104,7 @@
 					<p>내용</p>
 					<textarea rows="25" cols="80" name="be_cont"><%= exhb.getBe_cont() %></textarea>
 					<span class="star">사진</span>
-					<input type="file" id="be_photo">
+					<img src="<%= exhb.getBe_photo() %>" style="width: 200px;">
 				</div>
 				
 				<div id="alter">

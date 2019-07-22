@@ -39,8 +39,8 @@ public class ExhibitionDao {
 		
 		PreparedStatement pstmt = null;
 		//게시글,회원번호,전시코드,제목,평점,내용
-		String sql = "insert into BOARD_EXHB (BE_NUM, U_NUM, HE_NUM, BE_TITLE, BE_STAR, BE_CONT) "
-					+"values (B_EXHB_NUM_SEQ.NEXTVAL,?,?,?,?,?)";
+		String sql = "insert into BOARD_EXHB (BE_NUM, U_NUM, HE_NUM, BE_TITLE, BE_STAR, BE_CONT, BE_PHOTO) "
+					+"values (B_EXHB_NUM_SEQ.NEXTVAL,?,?,?,?,?,?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -53,6 +53,8 @@ public class ExhibitionDao {
 			pstmt.setString(3, exhbit.getBe_title());
 			pstmt.setFloat(4, exhbit.getBe_star());
 			pstmt.setString(5, exhbit.getBe_cont());
+			
+			pstmt.setString(6, exhbit.getBe_photo());
 			
 			result = pstmt.executeUpdate();
 			
