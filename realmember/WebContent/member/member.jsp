@@ -86,7 +86,6 @@ a {
 			<td>ID</td>
 			<td>NAME</td>
 			<td>NUM.</td>
-			<td>PROFILE</td>
 			<td colspan="2">관리</td>
 		</tr>
 		<%
@@ -126,7 +125,6 @@ a {
 			<td><%=rs.getString(2)%></td>
 			<td><%=rs.getString(3)%></td>
 			<td><%=rs.getString(4)%></td>
-			<td><%=memberInfo.getU_photo()%></td>
 			<td><a href="confirmUpdate.jsp?u_num=<%=rs.getInt(1)%>">수정</a></td>
 			<td><a href="confirmDelete.jsp?u_num=<%=rs.getInt(1)%>">삭제</a></td>
 		</tr>

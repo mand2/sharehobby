@@ -41,7 +41,7 @@
 	<!-- contents 시작 -->
 
 	<%
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("utf-8");
 		String id = (String) session.getAttribute("u_id");
 		boolean login = id == null ? false : true;
 
@@ -68,14 +68,14 @@
 					conn = ConnectionProvider.getConnection();
 					String u_id = request.getParameter("u_id");
 
-					MemberDao dao = MemberDao.getInstance();
-					u_num = dao.find_uNum(conn, u_id);
+					//MemberDao dao = MemberDao.getInstance();
+					//u_num = dao.find_uNum(conn, u_id);
 					//MemberInfo memberInfo = dao.viewMypage(u_id);
 
 					String sql = "select u_num,u_id,u_name,u_pnum,u_photo from member where u_id = ? ";
-					String sql_music = "select bm_title, bm_time, m.u_id, bm_cnt, bm_star, bm_cont from member m, board_music c where c.u_num = m.u_num and  m.u_id = ? ";
+					String sql_music = "select c.bm_title, c.bm_time, m.u_id, c.bm_cnt, c.bm_star, c.bm_cont "
+							+"from member m, board_music c where c.u_num = m.u_num and  m.u_id = ? ";
 					
-					stmt = conn.createStatement();
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, id);
 
@@ -83,7 +83,6 @@
 
 					while (rs.next()) {
 		%>
-
 
 		<div id="regForm">
 			<!--input 의 width값을 길게 주면 아래 행으로 넘어가니까 효과 있음!-->
@@ -101,9 +100,6 @@
 
 			<label for="img"><h4>전화번호</h4></label>
 			<%=rs.getString(5)%>
-			
-			<label for="img"><h4>프로필사진</h4></label>
-			<%=memberInfo.getU_photo()%>
 
 			<!-- <div class="warning">
 					<label for="y"><h4>생년월일</h4></label>
@@ -141,10 +137,8 @@
 
 			<div>
 				<%
-				
-								pstmt = conn.prepareStatement(sql_music);
+					pstmt = conn.prepareStatement(sql_music);
 								pstmt.setString(1, id);
-
 								rs = pstmt.executeQuery();
 
 								while (rs.next()) {
@@ -157,8 +151,8 @@
 						</span>
 					</h4>
 					<div class="title-info">
-						<span> <%=rs.getString("u_id")%></span>; <span>조회수 <%=rs.getInt("bm_cnt")%>
-						</span> <span>좋아요 <%-- <%= rs.getInt("bm_like") %> --%>
+						<span> <%=rs.getString("u_id")%></span> <span>조회수 <%=rs.getInt("bm_cnt")%>
+						</span> <span>좋아요<%-- <%=rs.getInt("bm_like")%> --%>
 						</span> <a href="#">좋아요</a>
 					</div>
 

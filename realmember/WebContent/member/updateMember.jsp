@@ -17,8 +17,8 @@
 
 	int resultCnt = 0;
 
-	MemberDao dao = MemberDao.getInstance();
-	resultCnt = dao.updateMember(u_num, memberInfo);
+	UpdateMemberService service = UpdateMemberService.getInstance();
+	resultCnt = service.updateMember(u_num, u_pw, memberInfo);
 %>
 <!DOCTYPE html>
 <html>
