@@ -88,7 +88,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String dbpw = ""; // db에서 가져올 비빌번호
+		String dbpw = "";
 		int chk = -1;
 
 		String sql = "select u_pw from member where u_id = ?";
@@ -121,32 +121,32 @@ public class MemberDao {
 		return chk;
 	}
 
-	public int idchk(String u_id) {
+	public static boolean idchk(String u_id) {
 		Connection conn = null;
-		PreparedStatement pstmt = null;
+		Statement stmt = null;
 		ResultSet rs = null;
-		int chkid = 0;
 		boolean chk = false;
 
-		String sql = "select count(*) from member where u_id = ?";
+		String sql = "select u_id from member";
 
 		try {
 			conn = ConnectionProvider.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, u_id);
-
-			rs = pstmt.executeQuery();
-
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			String id = rs.getString("u_id").trim();
 			if (rs.next()) {
-				chk = true;
-				chkid = 1;
+				if (id.equals(u_id)) {
+					chk = true;
+				}else {
+					chk =false;
+				}
 			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return chkid;
+		return chk;
 	}
 
 	public MemberInfo Member(int u_num) {

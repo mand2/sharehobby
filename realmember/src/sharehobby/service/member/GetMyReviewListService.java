@@ -14,27 +14,27 @@ public class GetMyReviewListService {
 		return service;
 	}
 
-	private GetMyReviewListService() {
-	}
-
+	private GetMyReviewListService() {}
+	
 	private static final int MYREVIEW_COUNT_PER_PAGE = 3;
-
+	
 	public MyReviewListView getMyReviewListView(int pageNumber) {
 		int currentPageNumber = pageNumber;
-
+		
 		Connection conn;
-
+		
 		MyReviewListView view = null;
-
+		
 		try {
 			conn = ConnectionProvider.getConnection();
-
+			
 			ReviewDao dao = ReviewDao.getInstance();
 			//dao.show(conn, u_id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		
 	}
 }
