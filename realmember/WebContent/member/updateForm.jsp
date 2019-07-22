@@ -2,11 +2,9 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="sharehobby.service.member.UpdateMemberService"%>
 <%@page import="sharehobby.dao.member.MemberDao"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="utf-8"%>
-<%
-	request.setCharacterEncoding("utf-8");
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +24,7 @@
 			<tr>
 				<td>아이디
 				<td><input type="text" name="u_id"
-					value="<%=session.getAttribute("sessionId")%>" readonly></td>
+					value="<%=session.getAttribute("u_id")%>" readonly></td>
 			</tr>
 			<tr>
 				<td>이름 수정</td>

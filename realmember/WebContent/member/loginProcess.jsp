@@ -1,3 +1,4 @@
+<%@page import="util.CookieBox"%>
 <%@page import="sharehobby.dao.member.MemberDao"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -28,29 +29,45 @@
 	<!-- contents 시작 -->
 
 	<%
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 
 		String u_id = request.getParameter("u_id");
 		String u_pw = request.getParameter("u_pw");
-
-		MemberInfo memberInfo = (MemberInfo)session.getAttribute(u_id);
+		MemberInfo memberInfo = (MemberInfo) session.getAttribute(u_id);
+		
+		String ch = request.getParameter("idSave");
+		
+		boolean chk = false;
 
 		MemberDao dao = MemberDao.getInstance();
 		int check = dao.loginChk(u_id, u_pw);
-		
 		if (check == 1) {
 			//session.setAttribute("loginInfo", memberInfo.toLoginInfo());
-			session.setAttribute("sessionId", u_id);
+			session.setAttribute("u_id", u_id);
+			
+			Cookie c1 = CookieBox.createCookie("LOGIN", "SUCCESS", -1);
+	 		response.addCookie(c1);
+	 		Cookie c2 = CookieBox.createCookie("ID", u_id, -1);
+	 		response.addCookie(c2);
+	 		Cookie uId = CookieBox.createCookie("saveID", u_id, 60*30);
+	 		response.addCookie(uId);
+	 		
+	 		chk = true;
+	 		
 			out.println("<script>");
 			out.println("alert('로그인 되었습니다.')");
 			out.println("location.href='../home/home.jsp'");
 			out.println("</script>");
+			
 		} else if (check == 0) {
 			out.println("<script>");
 			out.println("alert('로그인에 실패했습니다.')");
 			out.println("history.go(-1)");
 			out.println("</script>");
 		} else {
+			Cookie uId = CookieBox.createCookie("saveID", "", 0);
+	 		response.addCookie(uId);
+	 		
 			out.println("<script>");
 			out.println("alert('등록된 회원정보가 없습니다.')");
 			out.println("location.href='../home/join_form.jsp'");

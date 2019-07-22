@@ -1,7 +1,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="sharehobby.dao.member.MemberDao"%>
 <%@page import="sharehobby.service.member.UpdateMemberService"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="utf-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -12,12 +12,13 @@
 	Connection conn = null;
 
 	int u_num = Integer.parseInt(request.getParameter("u_num"));
-	String id = (String) session.getAttribute("sessionID");
+	String u_id = (String) session.getAttribute("u_id");
+	String u_pw = request.getParameter("u_pw");
 
 	int resultCnt = 0;
 
-	UpdateMemberService service = UpdateMemberService.getInstance();
-	resultCnt = service.updateMember(u_num, memberInfo);
+	MemberDao dao = MemberDao.getInstance();
+	resultCnt = dao.updateMember(u_num, memberInfo);
 %>
 <!DOCTYPE html>
 <html>

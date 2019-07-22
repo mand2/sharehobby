@@ -68,7 +68,7 @@ a {
 	<!-- contents 시작 -->
 	<%
 		request.setCharacterEncoding("utf-8");
-		String sessonId = (String) session.getAttribute("sessionId");
+		String sessonId = (String) session.getAttribute("u_id");
 		boolean login = sessonId == null ? false : true;
 
 		if (login == false) {
@@ -104,10 +104,10 @@ a {
 					
 					MemberDao dao = MemberDao.getInstance();
 					u_num = dao.find_uNum(conn, u_id);
-					MemberInfo memberInfo = dao.select(u_num);
+					MemberInfo memberInfo = dao.Member(u_num);
 					
-					//String sql = "select u_num,u_id,u_name,u_pnum,u_photo from member "; 
-					String sql = "select u_num,u_id,u_name,u_pnum,u_photo from project.member "; 
+					String sql = "select u_num,u_id,u_name,u_pnum,u_photo from member "; 
+					//String sql = "select u_num,u_id,u_name,u_pnum,u_photo from project.member "; 
 					
 					stmt = conn.createStatement();
 					//pstmt = conn.prepareStatement(sql);
@@ -115,7 +115,7 @@ a {
 					
 					//rs = pstmt.executeQuery();
 
-					rs = stmt.executeQuery(sql);
+					rs = stmt.executeQuery(sql); 
 
 					while (rs.next()) {
 		%>
@@ -126,7 +126,7 @@ a {
 			<td><%=rs.getString(2)%></td>
 			<td><%=rs.getString(3)%></td>
 			<td><%=rs.getString(4)%></td>
-			<td><%=rs.getString(5)%></td>
+			<td><%=memberInfo.getU_photo()%></td>
 			<td><a href="confirmUpdate.jsp?u_num=<%=rs.getInt(1)%>">수정</a></td>
 			<td><a href="confirmDelete.jsp?u_num=<%=rs.getInt(1)%>">삭제</a></td>
 		</tr>

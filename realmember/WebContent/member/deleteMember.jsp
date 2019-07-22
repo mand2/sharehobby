@@ -40,7 +40,7 @@ div{
 	<%
 		request.setCharacterEncoding("utf-8");
 
-		String id = (String) session.getAttribute("sessionID");
+		String id = (String) session.getAttribute("u_id");
 
 		int u_num = Integer.parseInt(request.getParameter("u_num"));
 		String u_pw = request.getParameter("u_pw");
