@@ -22,7 +22,6 @@ public class DeleteMemberService {
 
 	private DeleteMemberService() {
 	};
-	//�떛湲��넠 �걹
 
 	public int deleteMember(int u_num, String u_pw) throws SQLException, MemberNotFoundException, InvalidMemberPasswordException {
 		int resultCnt = 0;
@@ -35,7 +34,7 @@ public class DeleteMemberService {
 
 			MemberDao dao = MemberDao.getInstance();
 			
-			MemberInfo memberInfo = dao.select(u_num);
+			MemberInfo memberInfo = dao.Member(u_num);
 
 			if (memberInfo == null) {
 				throw new MemberNotFoundException("가입된 회원의 정보가 없습니다.." + u_num);
