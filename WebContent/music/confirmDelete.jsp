@@ -55,7 +55,7 @@
 		history.go(-1);
 	}
 	
-	location.href="boardMusicList.jsp";
+	location.href="${pageContext.request.contextPath}/music/boardMusicList.jsp";
 	
 	</script>
 </body>

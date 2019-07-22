@@ -1,4 +1,4 @@
-<%@page import="sharehobby.model.music.LoginInfo"%>
+<%@page import="sharehobby.model.member.LoginInfo"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="sharehobby.dao.music.BoardMusicDao"%>
 <%@page import="jdbc.ConnectionProvider"%>
@@ -30,24 +30,26 @@
 
 </head>
 <body>
+	<script>
+	</script>
 	<%@include file="../frame/nav.jsp"%>
 	<%@include file="../frame/header.jsp"%>
 	<div id="main">
 		<% if(uId != null) { %>
 		<div id="container">
-			<div id="board-list">
-				<h3>리뷰를 작성하세요.</h3>
-				<form action="confirmInsert.jsp" method="post">
+				<h3 class="title-header">리뷰를 작성하세요.</h3>
+				<div class="form-wrap">
+				<form action="${pageContext.request.contextPath}/music/confirmInsert.jsp" method="post">
 					<table border="1" style="border-collapse: collapse">
 						<tr>
 							<td>작성자</td>
 							<!-- 회원번호 hidden값으로 받아서 처리함. -->
 							<!-- session login정보 가져와서 처리함 -->
-							<td><input type="hidden" name="uNum" value="<%= uNum %>"><%=uId %></td>
+							<td><input type="hidden" name="uNum" value="<%= uNum %>" required><%=uId %></td>
 						</tr>
 						<tr>
 							<td>제목</td>
-							<td><input type="text" name="bmTitle"></td>
+							<td><input type="text" name="bmTitle" style="width: 400px"></td>
 						</tr>
 						<tr>
 							<td>별점</td>
@@ -62,15 +64,15 @@
 						<tr>
 							<td>음악코드</td>
 							<!-- hmNum : 테스트용으로 value 임의로 넣음 -->
-							<td><input type="text" name="hmNum" value="1"></td>
+							<td><input type="text" name="hmNum" value="1" required></td>
 						</tr>
 						<tr>
 							<td>내용</td>
-							<td><textarea name="bmCont" cols="100" rows="40"></textarea></td>
+							<td><textarea name="bmCont" cols="100" rows="40" required></textarea></td>
 						</tr>
 						<tr>
-							<td><input type="submit" value="등록"></td>
-							<td><input type="reset" value="취소"></td>
+							<td colspan="2" style="text-align:center" ><input type="submit" value="등록"><input type="reset" value="취소"></td>
+							
 						</tr>
 					</table>
 				</form>
@@ -78,7 +80,8 @@
 
 		</div>
 	</div>
-	<div id="footer"></div>
+	<div id="footer">
+	<%@ include file="../frame/footer.jsp" %></div>
 	<% } else { %>
 	<div>
 		로그인 된 회원만 이용 가능한 서비스 입니다. <a

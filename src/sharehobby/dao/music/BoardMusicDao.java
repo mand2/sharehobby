@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import jdbc.ConnectionProvider;
 import jdbc.jdbcUtil;
 import sharehobby.model.music.AlbumInfo;
 import sharehobby.model.music.BoardPost;
@@ -28,8 +29,8 @@ public class BoardMusicDao {
 		PreparedStatement pstmt = null;
 		
 		String sql = "insert into board_music "
-				+ "(bm_num,u_num,hm_num,bm_title,bm_star,bm_cont,bm_time,bm_cnt,bm_like)"
-				+ "values(bm_num_seq.nextval,?,?,?,?,?,sysdate,0,0)";
+				+ "(bm_num,u_num,hm_num,bm_title,bm_star,bm_cont,bm_time,bm_cnt)"
+				+ "values(bm_num_seq.nextval,?,?,?,?,?,sysdate,0)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -77,14 +78,53 @@ public class BoardMusicDao {
 			
 			
 		}
-	// 게시글 좋아요
-		public void addLike(Connection conn, int bmNum) {
+		
+		
+	//게시글 좋아요 확인
+		public boolean chkUserLike(int uNum) {
+			boolean chk = false;
+			ResultSet rs = null;
+			
 			PreparedStatement pstmt = null;
-			String sql = "update board_music set bm_like = bm_like+1 where bm_num =?";
+			String sql = "select * from bm_like where uNum = ?";
+			
+			Connection conn;
 			try {
-			BoardPost post = new BoardPost();
+				conn = ConnectionProvider.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, uNum);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					chk = true;
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				try {
+					rs.close();
+					pstmt.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+			return chk;
+			
+		}
+		
+	// 게시글 좋아요
+		public int addLike(Connection conn, int bmNum,int uNum) {
+			int likeChk = 0;
+			PreparedStatement pstmt = null;
+			String sql = "insert into bm_like values(1,?,?)";
+			try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,bmNum);
+			pstmt.setInt(2,uNum);
 			
 			pstmt.executeQuery();
 
@@ -98,8 +138,36 @@ public class BoardMusicDao {
 				}
 				
 			}
+			return likeChk = 1;
 		}
-	
+		
+		public int updateLike(Connection conn, int bmNum, int uNum) {
+			int likeChk = 0;
+			PreparedStatement pstmt = null;
+			String sql = "delete board_music where bmNum = ? and uId=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1,bmNum);
+				pstmt.setInt(2,uNum);
+				pstmt.executeQuery();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						pstmt.close();
+					} catch(SQLException e) {
+						e.printStackTrace();
+					}
+					
+				}
+				return likeChk = -1;
+		}
+		
+		
+		
+		
+		
 	// 리스트 상세보기 select
 	public BoardPost selectPost(Connection conn, int bmNum) {
 		BoardPost post = null;
@@ -107,7 +175,7 @@ public class BoardMusicDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select b.bm_num,h.hm_num, b.bm_title, m.u_id, b.bm_star, a.m_name,a.m_photo, b.bm_cont, b.bm_time, b.bm_cnt from hm_album a, hobby_music h, board_music b,member m where b.u_num = m.u_num and a.hm_num=h.hm_num2 and h.hm_num=b.hm_num and b.bm_num = ?";
+		String sql = "select b.bm_num,h.hm_num, b.bm_title, m.u_id, b.bm_star, a.m_name,a.m_photo, b.bm_cont, b.bm_time, b.bm_cnt, h.hm_title, a.m_singer,a.m_genre from hm_album a, hobby_music h, board_music b,member m where b.u_num = m.u_num and a.hm_num=h.hm_num2 and h.hm_num=b.hm_num and b.bm_num = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -127,6 +195,9 @@ public class BoardMusicDao {
 				post.setBmCont(rs.getString(8));
 				post.setBmTime(rs.getDate(9));
 				post.setBmCnt(rs.getInt(10));
+				post.setHmTitle(rs.getString(11));
+				post.setmSinger(rs.getString(12));
+				post.setmGenre(rs.getString(13));
 			}
 			
 		} catch (SQLException e) {

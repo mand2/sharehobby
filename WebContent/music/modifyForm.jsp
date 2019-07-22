@@ -1,5 +1,8 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="jdbc.ConnectionProvider"%>
+<%@page import="sharehobby.dao.music.BoardMusicDao"%>
 <%@page import="sharehobby.service.music.ShowPostService"%>
-<%@page import="sharehobby.model.music.LoginInfo"%>
+<%@page import="sharehobby.model.member.LoginInfo"%>
 <%@page import="sharehobby.model.music.BoardMusicList"%>
 <%@page import="sharehobby.service.music.BoardMusicListService"%>
 <%@page import="sharehobby.model.music.BoardPost"%>
@@ -10,6 +13,10 @@
 
 <%	
 	String uId = (String)session.getAttribute("u_id");
+	Connection conn = ConnectionProvider.getConnection();
+	BoardMusicDao dao = BoardMusicDao.getInstance();
+	
+	int uNum = dao.find_uNum(conn,uId);
 	int bmNum = 0;	
 	String str = request.getParameter("bmNum");
 	
@@ -24,53 +31,60 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/main_css.css">
+<link rel="stylesheet" href="../css/default_board.css">
 <script
   src="https://code.jquery.com/jquery-2.2.4.js"></script>
 
 </head>
 <body>
-	<%@include file="../frame/header.jsp" %>
 	<%@include file="../frame/nav.jsp" %>
+	<%@include file="../frame/header.jsp" %>
 		<div id="main">
 			<% if(uId !=null && uId.equals(post.getuId())){ %>
-			<div class="wrap">
-					<div id="title">
+			<div id="container">
+					<h3 class="title-header">
 						음악 관련 게시판 
-					</div>
-					<form action="confirmModify.jsp" method="post">
-						<table border="1" style="border-collase:collapse">
+					</h3>
+					<div class="form-wrap">
+					<form action="${pageContext.request.contextPath}/music/confirmModify.jsp" method="post">
+						<table border="1" style="border-collapse: collapse">
 							<input type="hidden" name="bmNum" value="<%= bmNum %>">
 							<tr>
-								<th>제목</th>
+								<td>작성자</td>
+								<!-- 회원번호 hidden값으로 받아서 처리함. -->
+								<!-- session login정보 가져와서 처리함 -->
+								<td><input type="hidden" name="uNum" value="<%= uNum %>" required><%=uId %></td>
+							</tr>
+							<tr>
+								<td>제목</td>
 								<td style="width: 500px;"><input type="text" value="<%=post.getBmTitle() %>" name="bmTitle"></td>
 							</tr>
 							<tr>
-								<th>별점</th>
-								<td>
-										<select name="bmStar" value="<%=post.getBmStar()%>">
-											<option value="5">5</option>
-											<option value="4">4</option>
-											<option value="3">3</option>
-											<option value="2">2</option>
-											<option value="1">1</option>										
-										</select>
-									</td>
+								<td>별점</td>
+								<td><select name="bmStar" value="<%=post.getBmStar()%>">
+										<option value="5">5</option>
+										<option value="4">4</option>
+										<option value="3">3</option>
+										<option value="2">2</option>
+										<option value="1">1</option>
+								</select></td>
 							</tr>
 							<tr>
-								<th>음악코드</th>
+								<td>음악코드</td>
+								<!-- hmNum : 테스트용으로 value 임의로 넣음 -->
 								<td><input type="text" value="<%=post.getHmNum() %>" name="hmNum"></td>
 							</tr>
 							<tr>
-								<th>내용</th>
+								<td>내용</td>
 								<td><textarea name="bmCont" cols="100" rows="40"><%=post.getBmCont()%></textarea></td>
 							</tr>
 							<tr>
-								<td><input type="submit" value="수정완료"></td>
-								<td><input type="reset" value="취소"></td>
+								<td colspan="2" style="text-align:center" ><input type="submit" value="수정완료"><input type="reset" value="취소"></td>
+								
 							</tr>
 						</table>
 					</form>
+					</div>
 			</div>
 		<% } else { %>
 			<script>
