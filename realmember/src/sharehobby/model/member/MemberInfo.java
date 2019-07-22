@@ -90,7 +90,7 @@ public class MemberInfo {
 	public String makejoin_succ_html(){
 		String str = "";
 		//str += "<div id=\"join_content\">\n";
-		str += "	"+ u_id +"("+u_name+")´Ô<br>È¸¿ø°¡ÀÔ µÇ¾ú½À´Ï´Ù.\n";
+		str += "	"+ u_id +"("+u_name+")ë‹˜<br>ê°€ìž…ì™„ë£Œ\n";
 		str += "	<br><table><tr><td><input type='button' value='MAIN' id='main_btn'></td>\n";
 		str += "	<td><input type='button' value='LOGIN' id='my_btn'></td></tr></table>\n";
 		//str += "</div>\n";	
@@ -101,7 +101,7 @@ public class MemberInfo {
 	public String notmakejoin_html() {
 		String str = "";
 		//str += "<div id=\"join_content\">\n";
-		str += "	È¸¿ø°¡ÀÔ¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.\n";
+		str += "	ê°€ìž…ì‹¤íŒ¨";
 		str += "	<br><input type='button' value='JOIN' id='join_btn'>\n";
 		//str += "</div>\n";	
 		
