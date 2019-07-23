@@ -80,15 +80,17 @@ public class BoardMusicDao {
 		}
 		
 		
-	//게시글 좋아요 확인
-		public boolean chkUserLike(int uNum) {
-			boolean chk = false;
+		//게시글 좋아요 유저 확인
+		// 좋아요 한 적 있으면 1
+		// 없으면 0
+		public int chkUserLike(Connection conn, int uNum) {
+			System.out.println(uNum);
+			int chk = 0;
 			ResultSet rs = null;
 			
 			PreparedStatement pstmt = null;
-			String sql = "select * from bm_like where uNum = ?";
+			String sql = "select count(*) from bm_like where u_num = ?";
 			
-			Connection conn;
 			try {
 				conn = ConnectionProvider.getConnection();
 				pstmt = conn.prepareStatement(sql);
@@ -97,7 +99,7 @@ public class BoardMusicDao {
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
-					chk = true;
+					chk = 1;
 				}
 				
 			} catch (SQLException e) {
@@ -117,7 +119,7 @@ public class BoardMusicDao {
 		}
 		
 	// 게시글 좋아요
-		public int addLike(Connection conn, int bmNum,int uNum) {
+		public int insertLike(Connection conn, int bmNum,int uNum) {
 			int likeChk = 0;
 			PreparedStatement pstmt = null;
 			String sql = "insert into bm_like values(1,?,?)";
@@ -144,7 +146,7 @@ public class BoardMusicDao {
 		public int updateLike(Connection conn, int bmNum, int uNum) {
 			int likeChk = 0;
 			PreparedStatement pstmt = null;
-			String sql = "delete board_music where bmNum = ? and uId=?";
+			String sql = "delete bm_like where bm_num = ? and u_num=?";
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1,bmNum);
@@ -161,10 +163,43 @@ public class BoardMusicDao {
 					}
 					
 				}
-				return likeChk = -1;
+				return likeChk = 0;
 		}
 		
-		
+		// 게시글 좋아요 수 count
+		public int countLike(Connection conn, int bmNum) {
+			int cntLike = 0;
+			ResultSet rs = null;
+			
+			PreparedStatement pstmt = null;
+			String sql = "select count(*) from bm_like where bm_num = ?";
+			
+			try {
+				conn = ConnectionProvider.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, bmNum);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					cntLike = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				try {
+					rs.close();
+					pstmt.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+			return cntLike;
+			
+		}
 		
 		
 		

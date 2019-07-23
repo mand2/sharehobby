@@ -1,3 +1,6 @@
+<%@page import="sharehobby.dao.music.BoardMusicDao"%>
+<%@page import="jdbc.ConnectionProvider"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="sharehobby.service.music.PostNotFoundException"%>
 <%@page import="sharehobby.service.music.ShowPostService"%>
 <%@page import="sharehobby.model.member.LoginInfo"%>
@@ -11,6 +14,9 @@
 
 <%
 	String uId = (String)session.getAttribute("u_id");
+	Connection conn = ConnectionProvider.getConnection();
+	BoardMusicDao dao = BoardMusicDao.getInstance();
+	int uNum = dao.find_uNum(conn,uId);
 	
 	int bmNum = 0;
 	
@@ -50,15 +56,10 @@
 					type:"GET",
 					data: {
 						bmNum:<%=post.getBmNum()%>,
-						uId:<%=post.getuId()%>
+						uNum:<%=uNum%>
 				},
 					success: function(data){
-						if(response.uId == '헐'){
-							$('.like-cnt').css('background-color','red');
-						} else {
-							
-							$('.like-cnt').html("좋아요 "+cnt++);
-						}
+							$('.like-cnt').html("좋아요 "+data);
 					}
 						
 				});
@@ -86,7 +87,7 @@
 						</h4>
 						<div class="title-info">
 							<span>
-							<%=post.getuId() %></span>
+							<%=post.getuId() %><%=uNum %></span>
 							<span>조회수
 								<%= post.getBmCnt() %>
 							</span>

@@ -57,7 +57,7 @@
 							</tr>
 							<tr>
 								<td>제목</td>
-								<td style="width: 500px;"><input type="text" value="<%=post.getBmTitle() %>" name="bmTitle"></td>
+								<td style="width: 500px;"><input type="text" value="<%=post.getBmTitle() %>" name="bmTitle" required></td>
 							</tr>
 							<tr>
 								<td>별점</td>
@@ -72,11 +72,11 @@
 							<tr>
 								<td>음악코드</td>
 								<!-- hmNum : 테스트용으로 value 임의로 넣음 -->
-								<td><input type="text" value="<%=post.getHmNum() %>" name="hmNum"></td>
+								<td><input type="text" value="<%=post.getHmNum() %>" name="hmNum" required></td>
 							</tr>
 							<tr>
 								<td>내용</td>
-								<td><textarea name="bmCont" cols="100" rows="40"><%=post.getBmCont()%></textarea></td>
+								<td><textarea name="bmCont" cols="100" rows="40" required><%=post.getBmCont()%></textarea></td>
 							</tr>
 							<tr>
 								<td colspan="2" style="text-align:center" ><input type="submit" value="수정완료"><input type="reset" value="취소"></td>
@@ -89,11 +89,19 @@
 		<% } else { %>
 			<script>
 				alert("잘못된 접근입니다.");
-				location.go(-1);
+				location.href="${pageContext.request.contextPath}/music/boardMusicList.jsp"
 			</script>
 		<% } %>	
 		</div>
+		
 		<div id="footer">
 		</div>
+		<script>
+		$(document).ready(function(){
+			$('input[type=reset]').click(function(){
+				history.go(-1);
+			});
+		});
+		</script>
 </body>
 </html>

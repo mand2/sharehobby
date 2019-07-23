@@ -7,8 +7,10 @@
 <%
 	String bmNumstr = request.getParameter("bmNum");
 	String uNumstr = request.getParameter("uNum");
+	
 	int bmNum = 0;
 	int uNum = 0;
+	
 	if(bmNumstr != null && uNumstr!=null){
 		bmNum = Integer.parseInt(bmNumstr);
 		uNum = Integer.parseInt(uNumstr);
@@ -16,17 +18,12 @@
 	
 	
 	AddLikeService service = AddLikeService.getInstance();
-	int cnt = service.addLike(uNum, bmNum);
-	
-	if(cnt >0){
-		out.print("Y");
-	} else {
-		out.print("N");
-	}
-	
-	
+
+	int chkLike = service.addLike(uNum, bmNum);
+	out.print(chkLike);
 	
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +35,10 @@
 </style>
 </head>
 <body>
+<script>
+
+	console.log("<%=uNum%>");
+</script>
 	
 </body>
 </html>
