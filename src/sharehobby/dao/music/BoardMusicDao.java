@@ -210,7 +210,7 @@ public class BoardMusicDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select b.bm_num,h.hm_num, b.bm_title, m.u_id, b.bm_star, a.m_name,a.m_photo, b.bm_cont, b.bm_time, b.bm_cnt, h.hm_title, a.m_singer,a.m_genre from hm_album a, hobby_music h, board_music b,member m where b.u_num = m.u_num and a.hm_num=h.hm_num2 and h.hm_num=b.hm_num and b.bm_num = ?";
+		String sql = "select b.bm_num,h.hm_num, b.bm_title, m.u_id, b.bm_star, a.m_name,a.m_photo, b.bm_cont, b.bm_time, b.bm_cnt, h.hm_title, a.m_singer,a.m_genre, h.hm_lyc from hm_album a, hobby_music h, board_music b,member m where b.u_num = m.u_num and a.hm_num=h.hm_num2 and h.hm_num=b.hm_num and b.bm_num = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -233,6 +233,7 @@ public class BoardMusicDao {
 				post.setHmTitle(rs.getString(11));
 				post.setmSinger(rs.getString(12));
 				post.setmGenre(rs.getString(13));
+				post.setHmLyc(rs.getString(14));
 			}
 			
 		} catch (SQLException e) {
@@ -488,8 +489,8 @@ public class BoardMusicDao {
 		}
 		
 		// 음악 정보 검색 select
-		public MusicInfo selectMusic(Connection conn, int hmNum) throws SQLException {
-			MusicInfo music = null;
+		public BoardPost selectMusic(Connection conn, int hmNum) throws SQLException {
+			BoardPost music = null;
 			
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;

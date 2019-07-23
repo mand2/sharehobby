@@ -31,7 +31,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/default_board.css">
+<link rel="stylesheet" href="../css/default_board_music.css">
 <script
   src="https://code.jquery.com/jquery-2.2.4.js"></script>
 

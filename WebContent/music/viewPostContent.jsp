@@ -1,3 +1,5 @@
+<%@page import="sharehobby.service.music.ShowMusicInfoService"%>
+<%@page import="sharehobby.model.music.MusicInfo"%>
 <%@page import="sharehobby.dao.music.BoardMusicDao"%>
 <%@page import="jdbc.ConnectionProvider"%>
 <%@page import="java.sql.Connection"%>
@@ -35,13 +37,14 @@
 		msg = e.getMessage();
 	}
 	
+	
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/default_board.css">
+<link rel="stylesheet" href="../css/default_board_music.css">
 <script
   src="https://code.jquery.com/jquery-2.2.4.js"></script>
 
@@ -66,6 +69,22 @@
 			});
 			
 			
+			
+			
+			var lyc = document.getElementById("show-lyc");
+			
+			lyc.onclick = function(){
+				if(lyc.checked){
+					$('.lyc-box').css('display','block');
+				} else {
+					$('.lyc-box').css('display','none');
+				}
+			}
+			
+			var x = document.getElementById("x");
+			x.onclick = function(){
+				$('.lyc-box').css('display','none');
+			}
 		});
 	</script>
 	
@@ -105,12 +124,17 @@
 							<%=post.getmGenre() %>
 							<p>
 								음악코드
-									<%=post.getHmNum() %>
-								</p>
+								<%=post.getHmNum() %>
+							</p>
+							<label for="lyc"><input type="checkbox" id="show-lyc" name="lyc">가사보기</label>
+							<div class="lyc-box">
+								<%=post.getHmLyc() %>
+								<button type="button" id="x">X</button>
+							</div>
 							<p class="cont-star">
-						평점
+								평점
 							<%=post.getBmStar() %>
-						</p>
+							</p>	
 						</div>
 						<p class="bm-cont"><%=post.getBmCont() %></p>
 						
@@ -136,5 +160,10 @@
 		</script>
 			
 		<%} %>
+		<scirpt>
+		
+			
+				
+		</scirpt>
 </body>
 </html>

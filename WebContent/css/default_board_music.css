@@ -372,3 +372,22 @@ input[type="submit"],input[type="reset"]{
 input[type="reset"]{
 	background-color: #3a1;
 }
+
+.lyc-box{
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -250px;
+	margin-left: -150px;
+	width: 300px;
+	height: 500px;
+	overflow-y:scroll;
+	background-color: #eee;
+}
+
+button#x{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+}
