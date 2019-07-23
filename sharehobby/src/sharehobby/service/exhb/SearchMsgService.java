@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jdbc.ConnectionProvider;
+import jdbc.JdbcUtil;
 import sharehobby.dao.exhb.ExhibitionDao;
 import sharehobby.model.exhb.BoardExhibition;
 
@@ -42,6 +43,9 @@ public class SearchMsgService {
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
+
+		} finally {
+			JdbcUtil.close(conn);
 		}
 		
 		return list;
@@ -61,6 +65,9 @@ public class SearchMsgService {
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
+
+		} finally {
+			JdbcUtil.close(conn);
 		}
 		
 		return result;

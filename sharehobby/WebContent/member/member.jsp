@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<link href="/sh/css/default_css.css" rel="stylesheet" type="text/css">
+<link href="/sh/css/default_css_ny.css" rel="stylesheet" type="text/css">
 <style>
 * {
 	margin: 0;

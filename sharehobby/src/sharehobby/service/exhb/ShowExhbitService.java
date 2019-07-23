@@ -75,6 +75,9 @@ public class ShowExhbitService {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+
+		} finally {
+			JdbcUtil.close(conn);
 		}
 		
 		return view;
@@ -97,6 +100,9 @@ public class ShowExhbitService {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+
+		} finally {
+			JdbcUtil.close(conn);
 		}
 		
 		return exhb;
@@ -116,6 +122,9 @@ public class ShowExhbitService {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+
+		} finally {
+			JdbcUtil.close(conn);
 		}
 		
 		return list;
@@ -135,6 +144,9 @@ public class ShowExhbitService {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		
+		} finally {
+			JdbcUtil.close(conn);
 		}
 		 
 		 return exhb;

@@ -48,6 +48,10 @@ public class WriteExhbitService {
 		} catch (SQLException e) {
 			//JdbcUtil.rollback(conn);
 			e.printStackTrace();
+		
+		} finally {
+			
+			JdbcUtil.close(conn);
 		}
 		
 		return result;

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>join::Share Hobby!</title>
-<link href="/sh/css/default_css.css" rel="stylesheet" type="text/css">
+<link href="/sh/css/default_css_ny.css" rel="stylesheet" type="text/css">
 <link href="/sh/css/regform_css.css" rel="stylesheet" type="text/css">
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

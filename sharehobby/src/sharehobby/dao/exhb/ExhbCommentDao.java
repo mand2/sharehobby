@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import jdbc.JdbcUtil;
 import sharehobby.model.exhb.BoardComment;
 
 /**
@@ -52,6 +53,8 @@ public class ExhbCommentDao {
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
 		}
 		
 		
