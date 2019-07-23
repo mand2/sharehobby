@@ -24,7 +24,7 @@
 		%>
 
 		<li><a
-			href="${pageContext.request.contextPath}/member/mypage.jsp">MYPAGE</a></li>
+			href="${pageContext.request.contextPath}/member/mypage3.jsp">MYPAGE</a></li>
 		<li><a
 			href="${pageContext.request.contextPath}/member/logout.jsp">LOGOUT</a></li>
 		<li><span><%=session.getAttribute("u_id")%>님</span></li>
