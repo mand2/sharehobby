@@ -10,7 +10,7 @@
 	request.setCharacterEncoding("utf-8");
 	String num = request.getParameter("be_num");
 	
-	int be_num = 208; 
+	int be_num = 232; 
 	if(num!=null){
 		be_num= Integer.parseInt(num);
 	}
@@ -30,7 +30,7 @@
 	ExhibitionDao dao = ExhibitionDao.getInstance(); 
 	
 	int user_num = dao.find_uNum(conn, u_id);
-%>   
+%>    
 <%-- <%
 	String u_id = "aa";
 	
@@ -38,7 +38,7 @@
 	ExhibitionDao dao = ExhibitionDao.getInstance(); 
 	
 	int user_num = dao.find_uNum(conn, u_id);
-%> --%>
+%>  --%>
 
 <!DOCTYPE html>
 <html>

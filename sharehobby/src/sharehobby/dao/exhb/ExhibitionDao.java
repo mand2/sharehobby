@@ -314,8 +314,7 @@ public class ExhibitionDao {
 				   + " set HE_NUM = ? , "
 				   + " BE_TITLE = ? , "
 				   + " BE_STAR = ? , "
-				   + " BE_CONT = ? , "
-				   + " BE_PHOTO = ? "
+				   + " BE_CONT = ? "
 				   + " where be_num = ? ";
 		
 		PreparedStatement pstmt = null;
@@ -323,12 +322,11 @@ public class ExhibitionDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(6, be_num);
+			pstmt.setInt(5, be_num);
 			pstmt.setInt(1, exhbit.getHe_num());
 			pstmt.setString(2, exhbit.getBe_title());
 			pstmt.setFloat(3, exhbit.getBe_star());
 			pstmt.setString(4, exhbit.getBe_cont());
-			pstmt.setString(5, exhbit.getBe_photo());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

@@ -80,7 +80,7 @@ public class DBCPInit extends HttpServlet {
 			poolConfig.setTestWhileIdle(true);
 
 			// 커넥션 최소 개수
-			poolConfig.setMinIdle(4);
+			poolConfig.setMinIdle(5);
 			
 			// 커넥션 최대 개수
 			poolConfig.setMaxTotal(10);
