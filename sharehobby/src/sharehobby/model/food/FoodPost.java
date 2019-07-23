@@ -13,13 +13,20 @@ public class FoodPost {
 	private String bf_photo; // 사진
 	private String bf_title; // 글 제목
 	private String u_id; // 아이디
-	
+	private int bf_hit; // 조회수
+
 	private String hf_name; // 식당 이름
 	private String hf_address; // 식당 주소
 	private String hf_pnum; // 식당 전화번호
 	private String hf_cont; // 내용
 	
 	
+	public int getBf_hit() {
+		return bf_hit;
+	}
+	public void setBf_hit(int bf_hit) {
+		this.bf_hit = bf_hit;
+	}
 	public String getU_id() {
 		return u_id;
 	}
