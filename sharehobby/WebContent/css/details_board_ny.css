@@ -1,0 +1,151 @@
+
+/*-- 전시정보보여주기 --*/
+#info {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 0.85em;
+    width: 130px;
+    background-color: #FAF19E;
+    text-align: center;
+    line-height: 30px;
+    clear: both;
+    margin-top: 30px;
+}
+
+#map {
+	margin: 20px;
+}
+
+#detailInfo {
+    padding: 30px;
+    min-height: 550px;      
+    border: 1px solid #FAF19E;
+    display: none;
+}
+    
+#detailInfo > h2{
+    font-size: 1.5em;
+}
+
+.detailwrap {
+    width: 45%;
+    float: left;        
+    max-height: 500px;
+    margin-left: 15px;
+}
+
+.details {
+    margin-top: 10px;
+    text-align: justify;
+}
+
+#chk {
+    display: none
+}
+
+/*---tooltip---*/
+    .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 50px;
+    height: 20px;
+    line-height: 20px;
+  background-color: #888;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 90%;
+  left: 50%;
+  margin-left: -25px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+    
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #888 transparent transparent transparent;
+}
+
+   
+    /*--답글 쓰기--*/
+    #comment {
+        width: 580px;
+        clear: both;
+        margin-top: 20px;
+        padding: 10px;
+    }
+    
+    #comment #btn,
+    #comment .re_btn{
+        display: block;
+        cursor: pointer;
+        width: inherit;
+        text-align: center;
+        line-height: 30px;
+        box-sizing: border-box;
+        background-color: #FAF19E;
+        font-size: 0.85em;
+    }
+    
+    #comment textarea{
+        resize: none;
+        overflow: auto;
+        width: 558px;
+        height: 100px;
+        margin: 10px auto;
+        padding: 10px;
+    }
+    
+    #comment .replyForm {
+        float: right;
+    }
+    
+    #comment .re_btn{
+        float: right;
+    }
+    
+    
+    /*--답글 올라온거--*/
+    .reply {
+        margin-top: 10px;
+        clear: both;
+        float: right;
+        text-align: justify;
+        width: 580px;
+    }
+    
+    .edit {
+        text-align: justify;
+    }
+    
+    .edit>div{
+        text-align: right;
+        font-size: 0.85em;
+        margin-top: 15px;
+    }
+    
+    .edit a:hover {
+        background-color: #FAF19E;
+        cursor: pointer;
+    }
+    
+    .re_chk{
+        display: none;
+    }
