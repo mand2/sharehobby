@@ -20,15 +20,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+<%if (cnt > 0) {%>
+	alert('리뷰가 수정되었습니다');
+	location.href = 'boardmain.jsp';
+<%} else {%>
+	alert('다시 입력해주세요.');
+	history.back(-1);
+<%}%>
+</script>
 <style>
 
 </style>
 </head>
 <body>
-	<h1>
-	<%= cnt>0 ? "리뷰를 성공적으로 수정하였습니다." : "리뷰 수정이 되지 않았습니다. " %>
-	</h1>
-
-	<a href="boardmain.jsp">리뷰 목록</a>
 </body>
 </html>

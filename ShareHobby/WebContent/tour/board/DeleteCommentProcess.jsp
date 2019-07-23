@@ -12,14 +12,8 @@ String comment = request.getParameter("comment");
 Connection conn = ConnectionProvider.getConnection();
 BoardDao dao = BoardDao.getInstance();
 
-/* int rCnt = dao.deleteComment(conn, comment); */
+int rCnt = dao.deleteComment(conn, comment);
 
-if (comment != null){
-	dao.deleteComment(conn, comment);
-	out.print("Y");
-} else {
-	out.print("N");
-}
 %>
 <!DOCTYPE html>
 <html>
@@ -28,7 +22,14 @@ if (comment != null){
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script>
-
+			<% if(rCnt>0){ %>
+				alert('삭제되었습니다.');
+				history.back(-1);
+				location.reload(true);
+			<%} else { %>
+				alert('denied!');
+			<%} %>
+	
 </script>
 <style>
 

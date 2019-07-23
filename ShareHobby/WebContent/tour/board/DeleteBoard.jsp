@@ -29,23 +29,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+<%if (chk) {%>
+	alert('리뷰가 삭제되었습니다');
+	location.href = 'boardmain.jsp';
+<%} else { %>
+	<%=msg%>; 		
+	history.back(-1);
+<%} %>
+</script>
 <style>
 
 </style>
 </head>
 <body>
-	
-	<h1>
-		<%
-			if(chk) {
-		%>
-			<%= resultCnt %> 개의 행이 삭제 되었습니다.
-		<%  } else { %>
-			<%= msg %>
-		<%  }%>
-	</h1>
-	
-	<a href="boardmain.jsp">리스트</a>
-	
+
 </body>
 </html>

@@ -93,22 +93,22 @@ table {
 			</tr>
 			<tr>
 				<td><label for="title">리뷰 제목</label></td>
-				<td><input type="text" id="title" name="title"></td>
+				<td><input type="text" id="title" name="title" value="<%= select.getTitle() %>"></td>
 			</tr>
 			
 			<tr>
 				<td><label for="photo">사진 올리기</label></td>
-				<td><input type="file" id="photo" name="photo"></td>
+				<td><input type="file" id="photo" name="photo" value="<%= select.getPhoto() %>"></td>
 			</tr>
 			<tr>
 				<td><label for="content">리뷰 내용</label> <br>
 					사진과 함께 <br> 상세 리뷰를 적어주세요 !
 				</td>
-				<td><textarea id="content" name="content"></textarea></td>
+				<td><textarea id="content" name="content"><%= select.getContent() %></textarea></td>
 			</tr>
 			<tr>
 				<td><label for="star">나의 평점은 ?</label></td>
-				<td><input type="text" id="star" name="start"></td>
+				<td><input type="text" id="star" name="start" value="<%= select.getStar() %>"></td>
 			</tr>
 			<tr>
 				<td colspan="2" id="last">

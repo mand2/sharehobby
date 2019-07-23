@@ -18,7 +18,7 @@
 	Board board = service.detail(pk);
 	
 	String idCheck = (String)session.getAttribute("u_id");
-
+	
 	BoardDao dao = BoardDao.getInstance();
 	
 	Connection conn = ConnectionProvider.getConnection();
@@ -64,24 +64,6 @@ $(document).ready(function(){
 		});//ajax	
 	});
 	
-	$('#x').click(function(){
-			$.ajax({
-				url: 'deleteCommentProcess.jsp',
-				type: 'GET',
-				dataType : 'text',
-				data: {
-					com : '<%= comm.getComment() %>'
-				},
-				success : function(data){
-					if(data=='Y'){
-						alert('completed!');
-						/* location.href="exhbBoard.jsp"; */
-					} else {
-						alert('denied!');
-					}
-				}
-			});//ajax	
-		});
 
 });
 
@@ -99,17 +81,22 @@ label {
 
 table {
 	width: 800px;
-	heght: 800px;
+	heght: 1000px;
 }
 
 table td {
 	border: 1px solid #ddd;
+	padding: 5px;
 }
 
 
 img {
-	width: 400px;
+	width: 500px;
 	height: 400px;
+}
+
+a {
+	text-align: center;
 }
 
 
@@ -137,26 +124,31 @@ img {
 				<td><%=board.getContent()%></td>
 			</tr>
 			<tr>
-				<td><label>리뷰 평점은 ?</label></td>
+				<td><label>리뷰 평점</label></td>
 				<td><%=board.getStar()%></td>
 			</tr>
-			<% if(idCheck==board.getU_id()) { %>
+			
 			<tr>
-				<td colspan="2" id="last">
+				<% if(idCheck.equals(board.getU_id())) { %>
+				<td colspan="2">
 					<a href="UpdateBoard.jsp?pk=<%=board.getPk()%>">수정하기</a> | 
 					<a href="DeleteBoard.jsp?pk=<%=board.getPk()%>">삭제하기</a> <br>
 				</td>
+				<% } %>
 			</tr>
-			<% } %>
 			<% if(comment == null) { %>
 			<tr>
-				<td> 리뷰 0 </td>
+				<td> 댓글 0 </td>
 			</tr>
 			<% } else { %>
 			<% for( Comment com : comment ) { %>
 			<tr>
 				<td> <%= com.getU_name() %></td>
-				<td> <%= com.getComment() %><a href="DeleteCommentProcess.jsp?comment=<%= com.getComment() %>"><span id="x">x</span></a></td>
+				<td> <%= com.getComment() %>
+				<% if(idCheck.equals(com.getU_name())) { %>
+				<a href="DeleteCommentProcess.jsp?comment=<%= com.getComment() %>"><span id="x">x</span></a>
+				<% } %>
+				</td>
 			</tr>
 			
 			<% } }%>
@@ -164,8 +156,8 @@ img {
 		</table>
 		<form  method="post">
 			<input type="hidden" name="r_num" value="<%=board.getPk()%>">
-			댓글 입력 <textarea rows="5" cols="30" id="comment" name="comment"></textarea>
-			<input type="submit" value="등록"> 
+			<textarea rows="5" cols="100" id="comment" name="comment"></textarea><br>
+			<input type="submit" value="댓글 등록"> 
 		</form>
 
 		<h4 id="test"></h4>

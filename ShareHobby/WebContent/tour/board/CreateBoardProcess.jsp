@@ -115,10 +115,11 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script>
 	<% if(cnt>0) { %>
-		history.back(-2);
+		alert('리뷰가 성공적으로 등록되었습니다');
+		location.href='boardmain.jsp'; 
 	<% } else { %>
 		alert('다시 입력해주세요.');
-		history.back();
+		history.back(-1);
 <% } %>
 
 </script>

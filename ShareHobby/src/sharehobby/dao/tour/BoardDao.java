@@ -265,8 +265,8 @@ public class BoardDao {
 		
 		ResultSet rs = null;
 		
-		String sql = "SELECT BT_NUM,BT_TITLE,BT_CONT,BT_STAR,BT_PHOTO "
-				+ "FROM BOARD_TOUR WHERE BT_NUM=?";
+		String sql = "SELECT b.BT_NUM,b.BT_TITLE,b.BT_CONT,b.BT_STAR,b.BT_PHOTO, m.U_ID "
+				+ "FROM BOARD_TOUR b join member m using (u_num) WHERE BT_NUM=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -281,6 +281,7 @@ public class BoardDao {
 				board.setContent(rs.getString(3));
 				board.setStar(rs.getFloat(4));
 				board.setPhoto(rs.getString(5));
+				board.setU_id(rs.getString(6));
 			}
 			
 		} catch (SQLException e) {

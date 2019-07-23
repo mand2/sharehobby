@@ -34,11 +34,6 @@ int rCnt = dao.createCommnet(conn, u_num, r_num, comment);
 </head>
 <body>
 
-	<h1>
-	<%= rCnt>0 ? "댓글을 성공적으로 등록하였습니다." : "댓글 등록이 되지 않았습니다. " %>
-	</h1>
-
-	<a href="boardmain.jsp">리뷰 목록</a>
 
 </body>
 </html>
