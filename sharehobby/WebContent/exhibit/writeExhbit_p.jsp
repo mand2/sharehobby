@@ -44,7 +44,7 @@
 	long fileSize = 0;
 	
 	String fullpath = "";
-	String uploadPath = "/exhibit/uploadFiles";
+	String uploadPath = "/uploadFiles";
 	String dir = request.getSession().getServletContext().getRealPath(uploadPath);
 	
 	
@@ -94,7 +94,7 @@
 				if(item.getFieldName().equals("be_photo")){
 					fileName = item.getName();
 					fileSize = item.getSize();
-					
+
 					saveFileName = System.nanoTime()+"_"+fileName;
 					item.write(new File(dir, saveFileName));
 					

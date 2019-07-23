@@ -183,3 +183,21 @@
         background-color: #FAF19E;
     }
     
+        
+    #alter > span{
+        float: right;
+        line-height: 30px;
+        width: 80px;
+        font-size: 0.85em;
+        text-align: center;
+        background-color: #FAF19E; 
+        box-sizing: border-box;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    
+    #alter > span:first-child {
+		margin-left: 10px;	
+	}
+    
+    
