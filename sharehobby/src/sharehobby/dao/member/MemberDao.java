@@ -88,7 +88,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String dbpw = "";
+		String dbpw = ""; // db에서 가져올 비빌번호
 		int chk = -1;
 
 		String sql = "select u_pw from member where u_id = ?";
@@ -120,34 +120,35 @@ public class MemberDao {
 		}
 		return chk;
 	}
+	
+	public boolean idchk(String u_id) {
+	      Connection conn = null;
+	      Statement stmt = null;
+	      ResultSet rs = null;
+	      boolean chk = false;
+	      String dbid = "";
 
-	public static boolean idchk(String u_id) {
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		boolean chk = false;
+	      String sql = "select u_id from member";
 
-		String sql = "select u_id from member";
+	      try {
+	         conn = ConnectionProvider.getConnection();
+	         stmt = conn.createStatement();
+	         rs = stmt.executeQuery(sql);
+	         dbid = rs.getString("u_id");
+	         if (rs.next()) {
+	            if (dbid.equals(u_id)) {
+	               chk = true;
+	            }else {
+	               chk =false;
+	            }
+	         }
 
-		try {
-			conn = ConnectionProvider.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			String id = rs.getString("u_id").trim();
-			if (rs.next()) {
-				if (id.equals(u_id)) {
-					chk = true;
-				}else {
-					chk =false;
-				}
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return chk;
-	}
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      return chk;
+	   }
 
 	public MemberInfo Member(int u_num) {
 		MemberInfo memberInfo = null;

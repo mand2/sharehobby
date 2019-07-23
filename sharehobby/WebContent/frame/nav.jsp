@@ -22,7 +22,7 @@
 			<a href="${pageContext.request.contextPath}/food/FoodMain.jsp">FOOD</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/music/exhbBoard.jsp">MUSIC</a>
+			<a href="${pageContext.request.contextPath}/music/boardMusicList.jsp">MUSIC</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/exhibit/exhbBoard.jsp">EXHIBIT</a>
@@ -35,7 +35,7 @@
 		</li>
 
 		<li>
-			<a href="${pageContext.request.contextPath}/member/mypage.jsp">MYPAGE</a>
+			<a href="${pageContext.request.contextPath}/member/mypage3.jsp">MYPAGE</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/member/logout.jsp">LOGOUT</a>

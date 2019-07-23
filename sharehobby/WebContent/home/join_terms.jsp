@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>terms::Share Hobby!</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<link href="/sh/css/default_css_ny.css" rel="stylesheet" type="text/css">
-<link href="/sh/css/regform_terms.css" rel="stylesheet" type="text/css">
+<link href="/sh/css/default_css.css" rel="stylesheet" type="text/css">
+<link href="/sh/css/regform_term.css" rel="stylesheet" type="text/css">
 <script text="text/javascript" src="/sh/home/check_join_terms.js"> </script>
 <style></style>
 </head>
