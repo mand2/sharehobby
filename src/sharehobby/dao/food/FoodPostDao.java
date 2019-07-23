@@ -119,7 +119,7 @@ public class FoodPostDao {
 
 		return totalCnt;
 	}
-	
+
 	// 게시판 리스트
 	public List<FoodPost> selectList(Connection conn, int firstRow, int endRow) {
 
@@ -159,22 +159,22 @@ public class FoodPostDao {
 
 		return list;
 	}
-	
-	
+
 	// 게시판 검색시 리스트
-	public List<FoodPost> look(Connection conn, String word,int firstRow, int endRow) {
-		
+	public List<FoodPost> look(Connection conn, String word, int firstRow, int endRow) {
+
 		List<FoodPost> look = new ArrayList<FoodPost>();
-		
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		String sql = "select f.bf_num, m.u_id, f.bf_title, f.hf_num, f.bf_star, f.bf_cont, f.bf_time from "
 				+ "(select u_num,bf_num, bf_title, hf_num, bf_star, bf_cont, bf_time from "
 				+ "( select rownum rnum,u_num, bf_num, bf_title, hf_num, bf_star, bf_cont, bf_time from"
 				+ "( select * from board_food bf ) where rownum <=5) "
-				+ "where rnum >= 1 order by bf_num asc) f, member m  where f.u_num = m.u_num and f.bf_title like '%"+word+"%'";
-		
+				+ "where rnum >= 1 order by bf_num asc) f, member m  where f.u_num = m.u_num and f.bf_title like '%"
+				+ word + "%'";
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, endRow);
@@ -202,26 +202,24 @@ public class FoodPostDao {
 
 		return look;
 	}
-	
-	
-	
+
 	public FoodPost viewPost(Connection conn, int bmNum) {
 		FoodPost foodpost = null;
-		
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		String sql = "select  b.bf_title, m.u_id, b.bf_time, b.bf_star, h.hf_name, h.hf_address, h.hf_pnum, b.bf_star, b.bf_cont, b.bf_photo  "
 				+ "from hobby_food h, hf_menu f, board_food b, member m  "
 				+ "where m.u_num=b.u_num and h.hf_num=f.hf_num and h.hf_num=b.hf_num and b.bf_num=?";
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bmNum);
-			
+
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				foodpost = new FoodPost();
 				foodpost.setBf_title(rs.getString(1));
 				foodpost.setU_id(rs.getString(2));
@@ -234,10 +232,10 @@ public class FoodPostDao {
 				foodpost.setBf_cont(rs.getString(9));
 				foodpost.setBf_photo(rs.getString(10));
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				rs.close();
 				pstmt.close();
@@ -245,11 +243,10 @@ public class FoodPostDao {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return foodpost;
 	}
-	
-	
+
 	public int deletePost(Connection conn, int bf_num) throws SQLException {
 
 		int resultCnt = 0;
@@ -276,23 +273,23 @@ public class FoodPostDao {
 		int resultCnt = 0;
 		PreparedStatement pstmt = null;
 		String sql = "update board_food set Bf_num=?,bf_title=?,bf_star=?,bf_cont=? where bf_num=?";
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setInt(1, updatePost.getHf_num());
 			pstmt.setString(2, updatePost.getBf_title());
-			pstmt.setFloat(3,updatePost.getBf_star());
+			pstmt.setFloat(3, updatePost.getBf_star());
 			pstmt.setString(4, updatePost.getBf_cont());
-			pstmt.setInt(5,bf_num);
-			
+			pstmt.setInt(5, bf_num);
+
 			resultCnt = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				pstmt.close();
-			} catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
@@ -325,4 +322,22 @@ public class FoodPostDao {
 		return u_num;
 	}
 
+	public void updateHit(Connection conn, int bf_num) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "update board_food set bf_hit = bf_hit + 1 " + " where bf_num = ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, bf_num);
+			rs = pstmt.executeQuery();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 }

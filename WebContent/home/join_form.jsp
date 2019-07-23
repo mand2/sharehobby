@@ -70,9 +70,11 @@
 				<div class="warning">
 					<label for="y"><h4>생년월일</h4></label>
 					<div id="birthbox">
-						<span class="inputbox birth"><input id="y" class="input"
-							placeholder="연도"></span> <span class="inputbox birth"> <select
-							id="m" class="input">
+						<span class="inputbox birth">
+							<input id="y" class="input" placeholder="연도">
+						</span> 
+						<span class="inputbox birth"> 
+							<select id="m" class="input">
 								<option value="1">1월</option>
 								<option value="2">2월</option>
 								<option value="3">3월</option>
@@ -85,9 +87,9 @@
 								<option value="10">10월</option>
 								<option value="11">11월</option>
 								<option value="12">12월</option>
-						</select>
-						</span> <span class="inputbox birth"><input id="d" class="input"
-							placeholder="날짜"></span>
+							</select>
+						</span> 
+						<span class="inputbox birth"><input id="d" class="input" placeholder="날짜"></span>
 					</div>
 					<!--birthbox-->
 					<h5></h5>

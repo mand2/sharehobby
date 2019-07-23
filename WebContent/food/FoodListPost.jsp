@@ -21,9 +21,6 @@
 	GetPostListService service = GetPostListService.getInstance();
 	// 응답 데이터의 결과
 	FoodPostList viewData = service.getPostListView(pageNumber);
-	
-
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -33,16 +30,55 @@
 <style type="text/css">
 #wrap {
 	weight: 900px;
-	width: 900px
+	width: 900px;
+	margin: auto;
 }
-
 #topForm {
 	text-align: right;
 }
 
 #list {
+	margin: auto;
 	text-align: center;
 }
+
+#pgnum {
+	text-align: center;
+}
+
+#pgnum>a {
+	margin: auto;
+	background-color: #FAF19E;
+}
+
+#topForm>input[type=button] {
+	width: 50px;
+	height: 38px;
+	box-sizing: border-box;
+	background-color: #FAF19E;
+	border: 0px;
+	border-radius: 3px;
+}
+
+#search {
+	text-align: right;
+}
+#search > select {
+	height: 25px;
+}
+#search>input[type=text]{
+	height: 20px;
+}
+#search>input[type=submit] {
+	width: 50px;
+	height: 30px;
+	margin: 0 3px;
+	box-sizing: border-box;
+	background-color: #FAF19E;
+	border: 0px;
+	border-radius: 3px;
+}
+
 </style>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -92,46 +128,54 @@
 						<td>평점</td>
 						<td>제목</td>
 						<td>작성일</td>
+						<!-- <td>조회수</td> -->
 						<td>수정 | 삭제</td>
 					</tr>
-			
-				<%
-					for (FoodPost foodpost : viewData.getPostList()) {
-				%>
+
+					<%
+						for (FoodPost foodpost : viewData.getPostList()) {
+					%>
 					<tr>
 						<td><%=foodpost.getBf_num()%></td>
 						<td><%=foodpost.getU_id()%></td>
 						<td><%=foodpost.getBf_star()%>
-						<td><a href="FoodViewPost.jsp?bf_num=<%=foodpost.getBf_num()%>"><%=foodpost.getBf_title()%></a></td>
+						<td><a
+							href="FoodViewPost.jsp?bf_num=<%=foodpost.getBf_num()%>"><%=foodpost.getBf_title()%></a></td>
 						<td><%=foodpost.getBf_time()%></td>
+						<%-- <td><%=foodpost.getBf_hit()+1%></td> --%>
 						<td><a href="FoodUpdatePost.jsp?bf_num=<%=foodpost.getBf_num()%>">수정하기</a>
 							| <a href="FoodDeletePost.jsp?bf_num=<%=foodpost.getBf_num()%>">삭제하기</a>
 							<br>
 					</tr>
-						<%
+					<%
 						}
 					%>
 				</table>
-				
+
+
+
+			</div>
+			<div id="pgnum">
+				<br>
+				<%
+					for (int i = 1; i <= viewData.getPageTotalCount(); i++) {
+				%>
+				<a href="FoodListPost.jsp?page=<%=i%>"><%=i%> </a>
+				<%
+					}
+					}
+				%>
+			</div>
+
+
+			<div id="search">
+
 				<select>
 					<option>제목</option>
 					<option>아이디</option>
 					<option>내용</option>
-				</select>
-				<input type="text"><input type="submit" value="검색">
-
-
+				</select> <input type="text"><input type="submit" value="검색">
 			</div>
-			<%
-				for (int i = 1; i <= viewData.getPageTotalCount(); i++) {
-			%>
-			<a href="FoodListPost.jsp?page=<%=i%>">[<%=i%>]
-			</a>
-			<%
-				}
-				}
-			%>
-
 		</div>
 		<!-- contents 끝 -->
 

@@ -21,7 +21,7 @@ public class GetPostListService {
 	}
 	
 	//1. 한페이지에 보여줄 게시글의 개수
-	private static final int POST_COUNT_PER_PAGE = 10;
+	private static final int POST_COUNT_PER_PAGE = 5;
 	
 	public FoodPostList getPostListView(int pageNumber) {
 		

@@ -5,9 +5,8 @@
 	pageEncoding="UTF-8"%>
 
 <%
-
 	int bf_num = 0;
-	
+
 	String str = request.getParameter("bf_num");
 
 	if (str != null) {
@@ -23,6 +22,39 @@
 <meta charset="UTF-8">
 <title>HOBBY - 맛집 :: <%=foodpost.getBf_title()%></title>
 <link href="/sh/css/default_css.css" rel="stylesheet" type="text/css">
+<style>
+#wrap {
+	weight: 900px;
+	width: 900px;
+	margin: auto;
+}
+#main {
+	weight: 700px;
+	width: 700px;
+	margin: auto;
+}
+#title {
+	font-size: 30px;
+	
+}
+#user, #time {
+	text-align: right;
+}
+#cont {
+	weight: 600px;
+	width: 600px;
+	margin: auto;
+	font-size: 15px;
+	border : 1px solid #DDD;
+	padding : 5px;
+}
+
+#upde {
+	text-align: right;
+}
+</style>
+
+
 </head>
 <body>
 
@@ -35,48 +67,41 @@
 	<!-- header 끝 -->
 
 	<!-- contents 시작 -->
+	<div id="wrap">
+		<div id="main">
+			<div class="wrap">
 
-	<div id="main">
-		<div class="wrap">
-		<table>
-			<tr>
-				<td>제 목</td>
-				<td><%=foodpost.getBf_title()%></td>
-			</tr>
-			<tr>
-				<td>작성자</td>
-				<td><%=foodpost.getU_id()%></td>
-			</tr>
-			<tr>
-				<td>평 점</td>
-				<td><%=foodpost.getBf_star()%></td>
-			</tr>
-			<tr>
-				<td>식당이름</td>
-				<td><%=foodpost.getHf_name()%></td>
-			</tr>
-			<tr>
-				<td>식당주소</td>
-				<td><%=foodpost.getHf_address()%></td>
-			</tr>
-			<tr>
-				<td>식당 전화번호</td>
-				<td><%=foodpost.getHf_pnum()%></td>
-			</tr>
-			<tr>
-				<td>내 용</td>
-				<td><%=foodpost.getBf_cont()%></td>
-			</tr>
-			<tr>
-				<td>사진</td>
-				<td><%=foodpost.getBf_photo()%></td>
-			</tr>
-		</table>
+				<div id="title">
+					<h3><%=foodpost.getBf_title()%></h3>
+				</div>
+				<div id="user">
+					작성자 : <%=foodpost.getU_id()%>
+				</div>
+				<div id="time">
+					작성일 : <%= foodpost.getBf_time() %>
+				</div>
+				<div id="store">
+					식 당 : <%=foodpost.getHf_name()%> (<%=foodpost.getHf_address()%>) 
+				</div>
+				<div id="pnum">
+					번 호 : <%=foodpost.getHf_pnum()%>
+				</div>
+				<div id="star">
+					평 점 : <%=foodpost.getBf_star()%>
+				</div>
+				<br>
+				<div id="cont">
+					<%=foodpost.getBf_cont()%>
+				</div>
+
+				<div id="upde">
+					<a href="FoodDeletePost.jsp?bf_num=<%=foodpost.getBf_num()%>">삭제하기</a> | 
+					<a href="FoodUpdatePost.jsp?bf_num=<%=foodpost.getBf_num()%>">수정하기</a>
+				</div>
+
+			</div>
 
 		</div>
-		<a href="FoodDeletePost.jsp?bf_num=<%=foodpost.getBf_num()%>">삭제하기</a>
-		<a href="FoodUpdatePost.jsp?bf_num=<%=foodpost.getBf_num()%>">수정하기</a>
-
 	</div>
 	<!-- contents 끝 -->
 
