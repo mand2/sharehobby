@@ -42,7 +42,7 @@ public class TourData extends HttpServlet {
         
         
         
-		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/RusService/areaBasedList?serviceKey=";
+		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=";
 		String serviceKey = "%2BaXZ%2B71EvGvZgAqY9aGBaRswCeT6JCSmfbyw%2F3K0xubpjSDBJ85%2Fy%2Fdlysm4p8hB3ctvQnECLz875rIiHpVABw%3D%3D";
 		String parameter = "";
 		
@@ -50,8 +50,8 @@ public class TourData extends HttpServlet {
 		
         PrintWriter out = response.getWriter();
 //        parameter = parameter + "&" + "contentId=1891502";
-        parameter = parameter + "&" + "contentTypeId=76";
-        parameter = parameter + "&" + "areaCode="+1;
+        parameter = parameter + "&" + "contentTypeId=12";
+        parameter = parameter + "&" + "areaCode=1";
         parameter = parameter + "&" + "sigunguCode=23&cat1=&cat2=&cat3=";
         parameter = parameter + "&" + "listYN=Y";
         parameter = parameter + "&" + "arrange=A";
@@ -89,7 +89,7 @@ public class TourData extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
         
-		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/RusService/areaBasedList?serviceKey=";
+		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=";
 		String serviceKey = "%2BaXZ%2B71EvGvZgAqY9aGBaRswCeT6JCSmfbyw%2F3K0xubpjSDBJ85%2Fy%2Fdlysm4p8hB3ctvQnECLz875rIiHpVABw%3D%3D";
 		String parameter = "";
 		
