@@ -10,7 +10,7 @@
 	request.setCharacterEncoding("utf-8");
 	String num = request.getParameter("be_num");
 	
-	int be_num = 230; 
+	int be_num = 208; 
 	if(num!=null){
 		be_num= Integer.parseInt(num);
 	}
