@@ -10,7 +10,7 @@
 	request.setCharacterEncoding("utf-8");
 	String num = request.getParameter("be_num");
 	
-	int be_num = 142; 
+	int be_num = 230; 
 	if(num!=null){
 		be_num= Integer.parseInt(num);
 	}
@@ -23,22 +23,22 @@
 %>
 
 <!-- 작성자와 보는사람 아이디 비교 -->
-<%-- <%
+<%
 	String u_id = (String)session.getAttribute("u_id");
 
 	Connection conn = ConnectionProvider.getConnection();
 	ExhibitionDao dao = ExhibitionDao.getInstance(); 
 	
 	int user_num = dao.find_uNum(conn, u_id);
-%>   --%>
-<%
+%>   
+<%-- <%
 	String u_id = "aa";
 	
 	Connection conn = ConnectionProvider.getConnection();
 	ExhibitionDao dao = ExhibitionDao.getInstance(); 
 	
 	int user_num = dao.find_uNum(conn, u_id);
-%>
+%> --%>
 
 <!DOCTYPE html>
 <html>
