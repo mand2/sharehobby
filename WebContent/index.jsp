@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>::Share Hobby!</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<link href="css/main_css.css" rel="stylesheet" type="text/css">
+<link href="/sh/css/main_css.css" rel="stylesheet" type="text/css">
 
 <style></style>
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jdbc.ConnectionProvider;
-import jdbc.jdbcUtil;
+import jdbc.JdbcUtil;
 import sharehobby.model.music.AlbumInfo;
 import sharehobby.model.music.BoardPost;
 import sharehobby.model.music.MusicInfo;

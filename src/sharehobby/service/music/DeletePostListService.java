@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import jdbc.ConnectionProvider;
-import jdbc.jdbcUtil;
+import jdbc.JdbcUtil;
 import sharehobby.dao.music.BoardMusicDao;
 import sharehobby.model.music.BoardPost;
 
@@ -41,7 +41,7 @@ public class DeletePostListService {
 		} catch (SQLException e) {
 			// .rollback() : conn이 null값이 아니라면 rollback처리 할거임.
 			// null값이 들어간다면 굳이 rollback할 거리도 없기 때문에 안해도됨 null예외 웅앵으로 넘어갈것임
-			jdbcUtil.rollback(conn);
+			JdbcUtil.rollback(conn);
 			e.printStackTrace();
 		} 
 		return rCnt;
