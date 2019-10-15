@@ -5,27 +5,31 @@
 
 
 **작성자**    
-@mand2 / 개인 포트폴리오 용으로 작성
+@[mand2](https://github.com/mand2) / 개인 포트폴리오 용으로 작성
 
 
 
 #### 참여자 & 담당 부분
 
-* 김나연 @mand2
+* 김나연 @[mand2](https://github.com/mand2)
+
   전시회 게시판 CRUD + 댓글 CRUD + 카카오MAP API
   
-* 권용민 @kytsaaa6
+* 권용민 @[kytsaaa6](https://github.com/kytsaaa6)
+
   여행 게시판 CRUD + TOUR API
   
-* 송주은 @son9zuen
+* 송주은 @[son9zuen](https://github.com/son9zuen)
+
   회원관리 CRUD
   
-* 주예리나 @orongee22
+* 주예리나 @[orongee22](https://github.com/orongee22)
+
   음악 게시판 CRUD
   
-* 한혜원 @hhw9797
-  맛집 게시판 CRUD
+* 한혜원 @[hhw9797](https://github.com/hhw9797)
 
+  맛집 게시판 CRUD
 
 
 #### 1. 기술/구조
@@ -58,26 +62,26 @@
 #### 2. 버전설명
 
 * 자세한 사항은 본 repository의 커밋내역과 ny branch 커밋내역 참고
-* v0  
+* **v0** 
   * 프로젝트 기획, 업무 분담  
   * DB erd로 테이블 구조 설정  
-* v1(  [관련 커밋 링크로 가기](https://github.com/mand2/sharehobby/commit/59522cec490394b7ec93001ad02bb9594dd54abd) )   
+* **v1**(  [관련 커밋 링크로 가기](https://github.com/mand2/sharehobby/commit/59522cec490394b7ec93001ad02bb9594dd54abd) )   
   * 전시 게시판 리스트 및 후기작성  
     *  DAO + model + service +  view 
   * 기본적인 css 작성 + 공유  
-  * 회원관리 member class 연결  
-* v2 ( [관련 커밋 링크로 가기](https://github.com/mand2/sharehobby/commit/b0e3d31a678122947829399d276198e4549d8f86) )  
+  * 회원관리 member class 연결 
+* **v2** ( [관련 커밋 링크로 가기](https://github.com/mand2/sharehobby/commit/b0e3d31a678122947829399d276198e4549d8f86) )  
   * 게시판 수정 및 삭제 작성 (작성자만 가능하게)  
     * DAO + model + service + view  
     * 삭제: `ajax` 를 이용  
   * AWS DBCP POOL max 변경  
   * 자세한 게시글 보기(상세후기) 페이지  
-  * 전시회 EXHIBITION DB 의 요소 연결  
-* v3 ( [관련 커밋 링크로 가기](https://github.com/mand2/sharehobby/commit/d2d58ef5e4b5b0e3c396ad3be9b52504054efc22) )  
+  * 전시회 EXHIBITION DB 의 요소 연결 
+* **v3** ( [관련 커밋 링크로 가기](https://github.com/mand2/sharehobby/commit/d2d58ef5e4b5b0e3c396ad3be9b52504054efc22) )  
   * 게시판 댓글 구현  
     * DAO + model + service + view  
     * ORACLE 계층 쿼리를 이용 
-* v4  
+* **v4**  
   * 전체 통합
 
 
